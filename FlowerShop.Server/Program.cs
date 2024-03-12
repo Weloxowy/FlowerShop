@@ -1,3 +1,4 @@
+using System;
 using System.Reflection;
 using FluentMigrator.Runner;
 using Microsoft.AspNetCore.Builder;
@@ -24,9 +25,13 @@ var app = builder.Build();
 using var scope = app.Services.CreateScope();
 var migrator = scope.ServiceProvider.GetService<IMigrationRunner>();
 
+if (migrator != null)
+{
+    migrator.ListMigrations();
+    migrator.MigrateUp();
+    throw new Exception("Migration fault");
+}
 
-migrator.ListMigrations();
-migrator.MigrateUp();
 app.UseDefaultFiles();
 app.UseStaticFiles();
 
