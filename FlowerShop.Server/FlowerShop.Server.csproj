@@ -4,17 +4,23 @@
     <TargetFramework>net8.0</TargetFramework>
     <Nullable>enable</Nullable>
     <ImplicitUsings>enable</ImplicitUsings>
-    <InvariantGlobalization>true</InvariantGlobalization>
+    <InvariantGlobalization>false</InvariantGlobalization>
     <SpaRoot>..\flowershop.client</SpaRoot>
     <SpaProxyLaunchCommand>npm run dev</SpaProxyLaunchCommand>
     <SpaProxyServerUrl>https://localhost:5173</SpaProxyServerUrl>
   </PropertyGroup>
 
   <ItemGroup>
+    <PackageReference Include="FluentAssertions" Version="7.0.0-alpha.3" />
+    <PackageReference Include="FluentMigrator.Extensions.SqlServer" Version="5.1.0" />
+    <PackageReference Include="FluentMigrator.Runner" Version="5.1.0" />
+    <PackageReference Include="FluentNHibernate" Version="3.3.0" />
     <PackageReference Include="Microsoft.AspNetCore.SpaProxy">
       <Version>8.*-*</Version>
     </PackageReference>
+    <PackageReference Include="NHibernate" Version="5.5.0" />
     <PackageReference Include="Swashbuckle.AspNetCore" Version="6.4.0" />
+    <PackageReference Include="System.Data.SqlClient" Version="4.8.6" />
   </ItemGroup>
 
   <ItemGroup>
@@ -22,5 +28,11 @@
       <ReferenceOutputAssembly>false</ReferenceOutputAssembly>
     </ProjectReference>
   </ItemGroup>
+
+
+
+
+
+
 
 </Project>
