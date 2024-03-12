@@ -29,6 +29,9 @@ if (migrator != null)
 {
     migrator.ListMigrations();
     migrator.MigrateUp();
+}
+else
+{
     throw new Exception("Migration fault");
 }
 
