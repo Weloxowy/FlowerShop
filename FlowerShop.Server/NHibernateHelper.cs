@@ -4,6 +4,7 @@ using NHibernate;
 using NHibernate.Tool.hbm2ddl;
 using System.Data.SqlClient;
 using FlowerShop.Server.Models;
+using FlowerShop.Server.Models.UserEntity;
 
 namespace FlowerShop.Server;
 
@@ -30,7 +31,9 @@ public class NHibernateHelper
                             m.FluentMappings.AddFromAssemblyOf<KlientEntity>()
                         ) Przykład mapowania TODO NIE ZAPOMINAĆ O MAPOWANIACH KOLEDZY*/ 
                         .Mappings(m =>
-                            m.FluentMappings.AddFromAssemblyOf<TestEntity>()) 
+                            m.FluentMappings.AddFromAssemblyOf<TestEntity>())
+                         .Mappings(m =>
+                            m.FluentMappings.AddFromAssemblyOf<UserEntity>())
                         .ExposeConfiguration(cfg => new SchemaUpdate(cfg).Execute(false, true))
                         .BuildSessionFactory();
 
