@@ -2,10 +2,14 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using FlowerShop.Server.Persistence.TestEntity;
+using FlowerShop.Server.Persistence.User;
+using FlowerShop.Server.Persistence.UserEntity;
+using Microsoft.AspNetCore.Cors;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 
 namespace FlowerShop.Server.Controllers.TestEntity;
+[EnableCors("AllowAllOrigins")]
 [Route("api/[controller]")]
 [ApiController]
 public class TestEntityController : ControllerBase
@@ -95,4 +99,5 @@ public class TestEntityController : ControllerBase
             }
         }
     }
+
 }

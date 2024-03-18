@@ -16,7 +16,7 @@ import {
 import './App.css';
 import '@mantine/core/styles.css';
 import { MantineProvider } from '@mantine/core';
-import React from "react";
+import React, { useState, useEffect } from "react";
 export default function App(props: PaperProps) {
     const [type, toggle] = useToggle(['login', 'register']);
     const form = useForm({
@@ -32,6 +32,26 @@ export default function App(props: PaperProps) {
             password: (val) => (val.length <= 6 ? 'Password should include at least 6 characters' : null),
         },
     });
+
+    const [users, setUsers] = useState([]);
+
+    useEffect(() => {
+        async function fetchData() {
+            try {
+                const response = await fetch("https://localhost:7142/api/UserEntity");
+                //https://localhost:7142/api/UserEntity/users/login/[login]?password=[password]
+                if (!response.ok) {
+                    throw new Error("Failed to fetch data");
+                }
+                const data = await response.json();
+                setUsers(data);
+            } catch (error) {
+                console.error("Error fetching data:", error);
+            }
+        }
+
+        fetchData();
+    }, []);
     return <MantineProvider>{
 
         <Paper radius="md" p="xl" withBorder {...props}>
@@ -42,7 +62,7 @@ export default function App(props: PaperProps) {
 
             <Divider label="Or continue with email" labelPosition="center" my="lg" />
 
-            <form onSubmit={form.onSubmit(() => {})}>
+            <form onSubmit={form.onSubmit(() => { })}>
                 <Stack>
                     {type === 'register' && (
                         <TextInput
@@ -82,7 +102,6 @@ export default function App(props: PaperProps) {
                         />
                     )}
                 </Stack>
-
                 <Group justify="space-between" mt="xl">
                     <Anchor component="button" type="button" c="dimmed" onClick={() => toggle()} size="xs">
                         {type === 'register'
@@ -94,6 +113,14 @@ export default function App(props: PaperProps) {
                     </Button>
                 </Group>
             </form>
+            <Stack spacing="md">
+                {users.map((user) => (
+                    <div key={user.id}>
+                        <Text>{user.name}</Text>
+                        <Text>{user.surname}</Text>
+                    </div>
+                ))}
+            </Stack>
         </Paper>
     }</MantineProvider>;
 }

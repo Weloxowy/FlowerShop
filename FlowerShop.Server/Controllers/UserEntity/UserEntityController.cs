@@ -1,9 +1,11 @@
 ﻿using FlowerShop.Server.Persistence.User;
 using FlowerShop.Server.Persistence.UserEntity;
+using Microsoft.AspNetCore.Cors;
 using Microsoft.AspNetCore.Mvc;
 
 namespace FlowerShop.Server.Controllers.User;
-    [Route("api/[controller]")]
+[EnableCors("AllowAllOrigins")]
+[Route("api/[controller]")]
     [ApiController]
 
     public class UserEntityController : ControllerBase
@@ -20,7 +22,7 @@ namespace FlowerShop.Server.Controllers.User;
         }
     }
 
-    [HttpGet("{id}")]
+    [HttpGet("id/{id}")]
     public ActionResult<Models.UserEntity.UserEntity> GetById(Guid id)
     {
         using (var session = NHibernateHelper.OpenSession())
@@ -100,6 +102,41 @@ namespace FlowerShop.Server.Controllers.User;
             }
         }
     }
+    [HttpGet("users/login/{login}")]
+    public ActionResult<Models.UserEntity.UserEntity> LoginVerification(string login, string password)
+    {
+        using (var session = NHibernateHelper.OpenSession())
+        {
+            try {
+                var userEntity = session.QueryOver<Models.UserEntity.UserEntity>()
+                                    .Where(u => u.Login == login)
+                                    .SingleOrDefault();
+
+                if (userEntity == null)
+                {
+                    Console.WriteLine("Brak dopasowania");
+                    return NotFound();
+                }
+
+                UserEntityService user = new UserEntityService();
+                bool passwordVerified = user.VerifyPassword(password, userEntity.Password);
+
+                if (!passwordVerified)
+                {
+                    Console.WriteLine("Nieprawidłowe hasło");
+                    return Unauthorized();
+                }
+
+                Console.WriteLine("Działa");
+                return Ok(userEntity);
+                }
+            catch (Exception ex)
+            {
+                return Unauthorized();
+            }
+        }
+    }
+
 
 }
 

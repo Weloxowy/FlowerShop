@@ -12,7 +12,7 @@ namespace FlowerShop.Server.Models.UserEntity
             Map(x => x.Surname);
             Map(x => x.TelephoneNumber);
             Map(x => x.EmailAddress);
-            Map(x => x.Login);
+            Map(x => x.Login).Unique();
             Map(x => x.Password);
             Map(x => x.IsUserProfileConfirmed);
             Map(x => x.IsUserProfileBlocked);
