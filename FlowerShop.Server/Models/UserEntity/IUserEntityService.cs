@@ -5,6 +5,7 @@
         public string HashPassword(string password, int length);
         public bool VerifyPassword(string tryPassword, string password);
         public string VerifyPhoneNumber(string TelephoneNumber);
-        public string VerifyEmail(string EmailAddress);
+        public bool VerifyEmail(string EmailAddress);
+        public bool VerifyPassword(string Password);
     }
 }

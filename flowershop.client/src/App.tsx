@@ -29,10 +29,41 @@ export default function App(props: PaperProps) {
 
         validate: {
             email: (val) => (/^\S+@\S+$/.test(val) ? null : 'Invalid email'),
-            password: (val) => (val.length <= 6 ? 'Password should include at least 6 characters' : null),
+            password: (val) => (val.length <= 8 ? 'Password should include at least 8 characters' : null),
         },
     });
+    async function handleRegister() {
+        const url = "https://localhost:7142/api/UserEntity";
+        const data = {
+            Name: form.values.name,
+            EmailAddress: form.values.email,
+            Password: form.values.password,
+            Login: "ziara", 
+            TelephoneNumber: "123321123",
+            Surname: "Ziara"
 
+        }
+        try {
+            const response = await fetch(url, {
+                method: 'POST',
+                headers: {
+                    'Content-Type':
+                    'application/json',
+                },
+                body: JSON.stringify(data),
+            });
+
+            if (!response.ok) {
+                const errorMessage = await response.text();
+                throw new Error(`HTTP error! Status: ${response.status}, Message: ${errorMessage}`);
+            }
+
+            // Entity created successfully
+            console.log('Entity created successfully');
+        } catch (error) {
+            console.error('Error creating entity:', error);
+        }
+    }
     const [users, setUsers] = useState([]);
 
     useEffect(() => {
@@ -108,7 +139,7 @@ export default function App(props: PaperProps) {
                             ? 'Already have an account? Login'
                             : "Don't have an account? Register"}
                     </Anchor>
-                    <Button type="submit" radius="xl">
+                    <Button type="submit" radius="xl" onClick={handleRegister}>
                         {upperFirst(type)}
                     </Button>
                 </Group>

@@ -1,4 +1,5 @@
-﻿using FlowerShop.Server.Persistence.User;
+﻿using FlowerShop.Server.Models.UserEntity;
+using FlowerShop.Server.Persistence.User;
 using FlowerShop.Server.Persistence.UserEntity;
 using Microsoft.AspNetCore.Cors;
 using Microsoft.AspNetCore.Mvc;
@@ -52,9 +53,22 @@ namespace FlowerShop.Server.Controllers.User;
             {
                 try
                 {
-                    session.Save(testEntity);
-                    
+                    var existingUser = session.Query<UserEntity>().FirstOrDefault(u => u.EmailAddress == testEntity.EmailAddress);
+                    if (existingUser != null)
+                    {
+                        return Conflict("Email address already exists");
+                    }
                     UserEntityService userEntityService = new UserEntityService();
+                    if (!userEntityService.VerifyEmail(testEntity.EmailAddress))
+                    {
+                        return Conflict("Email address is wrong");
+                    }
+                    if (!userEntityService.VerifyPassword(testEntity.Password))
+                    {
+                        return Conflict("Password is too short");
+                    }
+                    session.Save(testEntity);
+                   
                     testEntity.Password = userEntityService.HashPassword(testEntity.Password, 16);
                     transaction.Commit();
                     return CreatedAtAction(nameof(GetById), new { id = testEntity.id }, testEntity);

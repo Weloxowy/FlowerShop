@@ -4,6 +4,7 @@ using Microsoft.AspNetCore.Mvc;
 using System.Security.Cryptography;
 using System.Security.Policy;
 using System.Text;
+using System.Text.RegularExpressions;
 
 namespace FlowerShop.Server.Persistence.UserEntity
 {
@@ -46,14 +47,21 @@ namespace FlowerShop.Server.Persistence.UserEntity
             return true;
         }
 
-        public string VerifyEmail(string EmailAddress)
+        public bool VerifyEmail(string EmailAddress)
         {
-            throw new NotImplementedException();
+            string emailPattern = @"^\S+@\S+$";
+            return Regex.IsMatch(EmailAddress, emailPattern);
         }
 
         public string VerifyPhoneNumber(string TelephoneNumber)
         {
             throw new NotImplementedException();
+        }
+
+        public bool VerifyPassword(string Password)
+        {
+            if (Password.Length <  8) return false;
+            return true;
         }
     }
 }
