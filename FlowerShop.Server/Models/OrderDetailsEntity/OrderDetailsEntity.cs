@@ -4,18 +4,18 @@
     {
         public OrderDetailsEntity () : base() { }
 
-        public OrderDetailsEntity(Guid id, Guid order, Guid product, int qty, double unitPrice)
+        public OrderDetailsEntity(Guid id, Guid orderId, Guid productId, int qty, double unitPrice)
         {
             this.id = id;
-            Order = order;
-            Product = product;
+            OrderId = orderId;
+            ProductId = productId;
             Qty = qty;
             UnitPrice = unitPrice;
         }
 
         virtual public Guid id { get; set; }
-        public virtual Guid Order { get; set; }
-        public virtual Guid Product { get; set; }
+        public virtual Guid OrderId { get; set; }
+        public virtual Guid ProductId { get; set; }
         public virtual int Qty { get; set; }
         public virtual double UnitPrice { get; set; }
     

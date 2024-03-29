@@ -10,8 +10,8 @@ namespace FlowerShop.Server.Models.OrderDetailsEntity
         {
             Id(x => x.id).GeneratedBy.Guid();
             Map(x => x.UnitPrice);
-            Map(x => x.Product);
-            Map(x => x.Order);
+            Map(x => x.ProductId);
+            Map(x => x.OrderId);
             Map(x => x.Qty);
             Table(tablename);
         }
