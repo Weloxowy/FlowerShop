@@ -8,11 +8,8 @@ namespace FlowerShop.Server.Models.UserEntity
         public UserEntityMapping()
         {
             Id(x => x.Id);
-            Map(x => x.Name);
+            Map(x => x.FirstName);
             Map(x => x.Surname);
-            Map(x => x.TelephoneNumber);
-            Map(x => x.EmailAddress);
-            Map(x => x.Login).Unique();
             Map(x => x.Password);
             Map(x => x.IsUserProfileConfirmed);
             Map(x => x.IsUserProfileBlocked);

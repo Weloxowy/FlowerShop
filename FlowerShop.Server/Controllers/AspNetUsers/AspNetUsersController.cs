@@ -58,21 +58,18 @@ namespace FlowerShop.Server.Controllers.CategoryEntity
                         var passwordHasher = new PasswordHasher<AspNetUsers>();
                         string hashedPassword = passwordHasher.HashPassword(null, testEntity.Password);
                         testEntity.PasswordHash = hashedPassword;
-                        var existingUser = session.Query<AspNetUsers>().FirstOrDefault(u => u.EmailAddress == testEntity.EmailAddress);
-                        if (existingUser != null)
-                        {
-                            return Conflict("Email address already exists");
-                        }
-                        //UserEntityService userEntityService = new UserEntityService();
-                        if (!_userEntityService.VerifyEmail(testEntity.EmailAddress))
-                        {
-                            return Conflict("Email address is wrong");
-                        }
+
                         if (!_userEntityService.VerifyPassword(testEntity.Password))
                         {
                             return Conflict("Password is too short");
                         }
                         session.Save(testEntity);
+
+                        if (testEntity.Email != null)
+                            testEntity.NormalizedEmail = testEntity.Email.ToUpper();
+                        if (testEntity.UserName != null)
+                            testEntity.NormalizedUserName = testEntity.UserName.ToUpper();
+
                         transaction.Commit();
                         return CreatedAtAction(nameof(GetById), new { id = testEntity.Id }, testEntity);
                     }
@@ -139,25 +136,12 @@ namespace FlowerShop.Server.Controllers.CategoryEntity
                         return NotFound("User not found");
                     }
 
-                   
-                    var userWithSameEmail = session.Query<Models.UserEntity.AspNetUsers>().FirstOrDefault(u => u.EmailAddress == userEntity.EmailAddress && u.Id != userEntity.Id);
-                    if (userWithSameEmail != null)
-                    {
-                        return Conflict("Email address already exists");
-                    }
-
-
-                    if (!_userEntityService.VerifyEmail(userEntity.EmailAddress))
-                    {
-                        return Conflict("Email address is wrong");
-                    }
                     if (!_userEntityService.VerifyPassword(userEntity.Password))
                     {
                         return Conflict("Password is too short");
                     }
 
 
-                    existingUser.EmailAddress = userEntity.EmailAddress;
                     existingUser.Password = _userEntityService.HashPassword(userEntity.Password, 16);
 
 
