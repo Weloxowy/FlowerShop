@@ -6,10 +6,6 @@ namespace FlowerShop.Server.Models.UserEntity
     {
         public UserEntity() : base()
         {
-            PhoneNumber = "123123123";
-            EmailConfirmed = true;
-            PhoneNumberConfirmed = true;
-            
         }
 
         public UserEntity(Guid id, string Name, string Surname, string TelephoneNumber, string EmailAddress,
@@ -24,7 +20,6 @@ namespace FlowerShop.Server.Models.UserEntity
             this.IsUserProfileBlocked = isBlocked; //For not allowing certain users to make new orders
             this.IsUserProfileConfirmed = IsConf; //false if user not confirmed creating a new account, otherwise true
             this.UserRank = userRank;
-            PhoneNumber = "123";
         }
         public virtual string? Name { get; set; }
         public virtual string? Surname { get; set; }

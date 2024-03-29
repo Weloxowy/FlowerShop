@@ -17,7 +17,7 @@ namespace FlowerShop.Server.Persistence.UserEntity.Database.Migrations
                 .WithColumn("PasswordHash").AsString()
                 .WithColumn("SecurityStamp").AsString()
                 .WithColumn("ConcurrencyStamp").AsString()
-                .WithColumn("PhoneNumber").AsString()
+                .WithColumn("PhoneNumber").AsString().Nullable()
                 .WithColumn("PhoneNumberConfirmed").AsBoolean()
                 .WithColumn("TwoFactorEnabled").AsBoolean()
                 .WithColumn("LockoutEnd").AsDateTimeOffset().Nullable()
