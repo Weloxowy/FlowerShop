@@ -26,7 +26,7 @@ public class _202423030001_CreateTable : Migration
                 .WithColumn(nameof(AddressEntity.City)).AsString().NotNullable()
                 .WithColumn(nameof(AddressEntity.Voivodeship)).AsString().NotNullable()
                 .WithColumn(nameof(AddressEntity.Country)).AsString().NotNullable()
-                .WithColumn("UserAddress").AsGuid().NotNullable()
+                .WithColumn("UserAddress").AsString().NotNullable()
                 ;
             Create.ForeignKey("FK_User_Address").FromTable("AddressEntity").ForeignColumn("UserAddress").ToTable("AspNetUsers").PrimaryColumn("Id");
         }

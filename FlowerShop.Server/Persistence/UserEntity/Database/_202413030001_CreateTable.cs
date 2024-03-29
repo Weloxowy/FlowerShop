@@ -11,15 +11,15 @@ namespace FlowerShop.Server.Models.UserEntity.Database
             if (!Schema.Table(tableName).Exists())
             {
                 Create.Table(tableName)
-                    .WithColumn(nameof(UserEntity.Name)).AsString().NotNullable()
-                    .WithColumn(nameof(UserEntity.Surname)).AsString().Nullable()
-                    .WithColumn(nameof(UserEntity.TelephoneNumber)).AsString().Nullable()
-                    .WithColumn(nameof(UserEntity.EmailAddress)).AsString().NotNullable()
-                    .WithColumn(nameof(UserEntity.Login)).AsString().Nullable()
-                    .WithColumn(nameof(UserEntity.Password)).AsString().Nullable()
-                    .WithColumn(nameof(UserEntity.IsUserProfileBlocked)).AsBoolean().Nullable()
-                    .WithColumn(nameof(UserEntity.IsUserProfileConfirmed)).AsBoolean().Nullable()
-                    .WithColumn(nameof(UserEntity.UserRank)).AsInt32().Nullable()
+                    .WithColumn(nameof(AspNetUsers.Name)).AsString().NotNullable()
+                    .WithColumn(nameof(AspNetUsers.Surname)).AsString().Nullable()
+                    .WithColumn(nameof(AspNetUsers.TelephoneNumber)).AsString().Nullable()
+                    .WithColumn(nameof(AspNetUsers.EmailAddress)).AsString().NotNullable()
+                    .WithColumn(nameof(AspNetUsers.Login)).AsString().Nullable()
+                    .WithColumn(nameof(AspNetUsers.Password)).AsString().Nullable()
+                    .WithColumn(nameof(AspNetUsers.IsUserProfileBlocked)).AsBoolean().Nullable()
+                    .WithColumn(nameof(AspNetUsers.IsUserProfileConfirmed)).AsBoolean().Nullable()
+                    .WithColumn(nameof(AspNetUsers.UserRank)).AsInt32().Nullable()
                     ;
             }
         }

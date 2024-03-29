@@ -38,7 +38,7 @@ builder.Services.AddDbContext<DataContext>(options =>
     options.UseSqlServer(
         "Server=localhost\\SQLEXPRESS;Database=Kwiaciarnia;Integrated Security=SSPI;Application Name=Kwiaciarnia; TrustServerCertificate=true;"));
 builder.Services.AddAuthorization();
-builder.Services.AddIdentityApiEndpoints<UserEntity>()
+builder.Services.AddIdentityApiEndpoints<AspNetUsers>()
     .AddEntityFrameworkStores<DataContext>();
 
 
@@ -56,7 +56,7 @@ builder.Services.AddFluentMigratorCore() // Move FluentMigrator registration her
 
 var app = builder.Build();
 
-app.MapIdentityApi<UserEntity>();
+app.MapIdentityApi<AspNetUsers>();
 
 using var scope = app.Services.CreateScope();
 var migrator = scope.ServiceProvider.GetService<IMigrationRunner>();
@@ -90,7 +90,7 @@ app.MapFallbackToFile("/index.html");
 
 app.Run();
 
-class DataContext : IdentityDbContext<UserEntity>
+class DataContext : IdentityDbContext<AspNetUsers>
 {
     public DataContext(DbContextOptions<DataContext> options) : base(options){}
 }

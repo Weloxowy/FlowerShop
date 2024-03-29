@@ -34,6 +34,7 @@
     <ProjectReference Include="..\flowershop.client\flowershop.client.esproj">
       <ReferenceOutputAssembly>false</ReferenceOutputAssembly>
     </ProjectReference>
+
   </ItemGroup>
 
 

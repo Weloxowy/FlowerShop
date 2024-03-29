@@ -11,7 +11,7 @@ namespace FlowerShop.Server.Persistence.User
             {
                 using (var transaction = session.BeginTransaction())
                 {
-                    var entity = session.Get<Models.UserEntity.UserEntity>(id);
+                    var entity = session.Get<Models.UserEntity.AspNetUsers>(id);
                     if (entity == null)
                         return false;
 

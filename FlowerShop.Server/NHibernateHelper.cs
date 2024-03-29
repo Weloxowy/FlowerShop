@@ -38,7 +38,7 @@ public class NHibernateHelper
                         .Mappings(m =>
                             m.FluentMappings.AddFromAssemblyOf<TestEntity>())
                         .Mappings(m =>
-                            m.FluentMappings.AddFromAssemblyOf<UserEntity>().AddFromAssemblyOf<UserRank>())
+                            m.FluentMappings.AddFromAssemblyOf<AspNetUsers>().AddFromAssemblyOf<UserRank>())
                          .Mappings(m =>
                             m.FluentMappings.AddFromAssemblyOf<AddressEntity>())
                          .Mappings(m =>

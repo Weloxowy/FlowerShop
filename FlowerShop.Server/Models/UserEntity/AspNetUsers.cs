@@ -2,13 +2,13 @@
 
 namespace FlowerShop.Server.Models.UserEntity
 {
-    public class UserEntity : IdentityUser
+    public class AspNetUsers : IdentityUser
     {
-        public UserEntity() : base()
+        public AspNetUsers() : base()
         {
         }
 
-        public UserEntity(Guid id, string Name, string Surname, string TelephoneNumber, string EmailAddress,
+        public AspNetUsers(Guid id, string Name, string Surname, string TelephoneNumber, string EmailAddress,
             string Login, string Password, bool IsConf, bool isBlocked, UserRank userRank, Guid address, Guid company)
         {
             this.Name = Name;
@@ -21,6 +21,7 @@ namespace FlowerShop.Server.Models.UserEntity
             this.IsUserProfileConfirmed = IsConf; //false if user not confirmed creating a new account, otherwise true
             this.UserRank = userRank;
         }
+
         public virtual string? Name { get; set; }
         public virtual string? Surname { get; set; }
         public virtual string? TelephoneNumber { get; set; }
@@ -32,4 +33,5 @@ namespace FlowerShop.Server.Models.UserEntity
         public virtual UserRank? UserRank { get; set; }
         //TODO Payment 
     }
+    
 }
