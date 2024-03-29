@@ -23,9 +23,9 @@ namespace FlowerShop.Server.Models.OrderEntity.Database
                     .WithColumn(nameof(OrderEntity.AdditionalComment)).AsString().NotNullable()
                     .WithColumn(nameof(OrderEntity.OrderDate)).AsDateTime().Nullable()
                     .WithColumn(nameof(OrderEntity.TotalAmount)).AsDouble().Nullable()
-                    .WithColumn("User").AsGuid().NotNullable()
+                    .WithColumn("UserId").AsGuid().NotNullable()
                 ;
-                Create.ForeignKey("FK_User_Order").FromTable("OrderEntity").ForeignColumn("User").ToTable("UserEntity").PrimaryColumn("id");
+                Create.ForeignKey("FK_User_Order").FromTable("OrderEntity").ForeignColumn("UserId").ToTable("UserEntity").PrimaryColumn("id");
 
             }
         }

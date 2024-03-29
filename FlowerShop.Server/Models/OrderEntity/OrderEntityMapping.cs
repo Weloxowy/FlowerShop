@@ -1,5 +1,4 @@
-﻿using FluentNHibernate.Conventions.Inspections;
-using FluentNHibernate.Mapping;
+﻿using FluentNHibernate.Mapping;
 
 namespace FlowerShop.Server.Models.OrderEntity
 {
@@ -13,7 +12,7 @@ namespace FlowerShop.Server.Models.OrderEntity
             Map(x => x.OrderDate);
             Map(x => x.AdditionalComment);
             Map(x => x.TotalAmount);
-            Map(x => x.User);
+            Map(x => x.UserId);
             Table(tablename);
         }
     }

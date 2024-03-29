@@ -22,11 +22,11 @@ namespace FlowerShop.Server.Models.OrderDetailsEntity.Database
                     .WithColumn(nameof(OrderDetailsEntity.id)).AsGuid().NotNullable().PrimaryKey()
                     .WithColumn(nameof(OrderDetailsEntity.UnitPrice)).AsDouble().NotNullable()
                     .WithColumn(nameof(OrderDetailsEntity.Qty)).AsInt32().Nullable()
-                    .WithColumn("Order").AsGuid().NotNullable()
-                    .WithColumn("Product").AsGuid().NotNullable()
+                    .WithColumn("OrderId").AsGuid().NotNullable()
+                    .WithColumn("ProductId").AsGuid().NotNullable()
                 ;
-                Create.ForeignKey("FK_OrderDetails_Order").FromTable("OrderDetailsEntity").ForeignColumn("Order").ToTable("OrderEntity").PrimaryColumn("id");
-                Create.ForeignKey("FK_OrderDetails_Product").FromTable("OrderDetailsEntity").ForeignColumn("Product").ToTable("ProductEntity").PrimaryColumn("id");
+                Create.ForeignKey("FK_OrderDetails_Order").FromTable("OrderDetailsEntity").ForeignColumn("OrderId").ToTable("OrderEntity").PrimaryColumn("id");
+                Create.ForeignKey("FK_OrderDetails_Product").FromTable("OrderDetailsEntity").ForeignColumn("ProductId").ToTable("ProductEntity").PrimaryColumn("id");
 
             }
         }
