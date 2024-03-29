@@ -2,7 +2,7 @@ using FluentMigrator;
 
 namespace FlowerShop.Server.Persistence.UserEntity.Database;
 
-[Migration(20240329150000)] // Unique identifier for the migration
+[Migration(20200329150000)] // Unique identifier for the migration
 public class CreateUserClaimsTable : Migration
 {
     public override void Up()

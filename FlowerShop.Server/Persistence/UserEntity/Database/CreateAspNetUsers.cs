@@ -2,13 +2,13 @@ using FluentMigrator;
 
 namespace FlowerShop.Server.Persistence.UserEntity.Database.Migrations
 {
-    [Migration(20240329000000)] // Change the version number as per your requirement
-    public class InitialCreate : Migration
+    [Migration(202013030001)] // Change the version number as per your requirement
+    public class CreateAspNetUsers : Migration
     {
         public override void Up()
         {
             Create.Table("AspNetUsers")
-                .WithColumn("Id").AsString().NotNullable().PrimaryKey()
+                .WithColumn("Id").AsGuid().NotNullable().PrimaryKey()
                 .WithColumn("UserName").AsString()
                 .WithColumn("NormalizedUserName").AsString()
                 .WithColumn("Email").AsString()
@@ -38,7 +38,11 @@ namespace FlowerShop.Server.Persistence.UserEntity.Database.Migrations
 
         public override void Down()
         {
-            Delete.Table("AspNetUsers");
+            if (Schema.Table("AspNetUsers").Exists())
+            {
+                Delete.Table("AspNetUsers");
+            };
+            
 
             // Add more DeleteTable statements if necessary for other tables
         }
