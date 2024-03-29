@@ -2,11 +2,6 @@ using FluentNHibernate.Cfg;
 using FluentNHibernate.Cfg.Db;
 using NHibernate;
 using NHibernate.Tool.hbm2ddl;
-using System.Data.SqlClient;
-using FluentNHibernate.Cfg;
-using FluentNHibernate.Cfg.Db;
-using NHibernate;
-using NHibernate.Tool.hbm2ddl;
 using FlowerShop.Server.Models;
 using FlowerShop.Server.Models.UserEntity;
 using FlowerShop.Server.Models.AddressEntity;
@@ -49,11 +44,11 @@ public class NHibernateHelper
                          .Mappings(m =>
                             m.FluentMappings.AddFromAssemblyOf<CompanyEntity>())
                          .Mappings(m =>
-                            m.FluentMappings.AddFromAssemblyOf<OrderEntity>())
-                         .Mappings(m =>
                             m.FluentMappings.AddFromAssemblyOf<CategoryEntity>())
                          .Mappings(m =>
                             m.FluentMappings.AddFromAssemblyOf<ProductEntity>().AddFromAssemblyOf<Unit>())
+                         .Mappings(m =>
+                            m.FluentMappings.AddFromAssemblyOf<OrderEntity>())
                          .Mappings(m =>
                             m.FluentMappings.AddFromAssemblyOf<OrderDetailsEntity>())
                         .ExposeConfiguration(cfg => new SchemaUpdate(cfg).Execute(false, true))

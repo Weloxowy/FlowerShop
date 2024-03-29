@@ -1,6 +1,7 @@
 ﻿using FlowerShop.Server.Models.UserEntity;
 using FlowerShop.Server.Persistence.User;
 using FlowerShop.Server.Persistence.UserEntity;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Cors;
 using Microsoft.AspNetCore.Mvc;
 
@@ -23,6 +24,7 @@ namespace FlowerShop.Server.Controllers.User;
         }
     }
 
+    
     [HttpGet("id/{id}")]
     public ActionResult<Models.UserEntity.UserEntity> GetById(Guid id)
     {

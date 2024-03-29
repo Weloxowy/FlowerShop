@@ -1,5 +1,4 @@
-﻿using FlowerShop.Server.Persistence.CategoryEntity;
-using FlowerShop.Server.Persistence.OrderEntity;
+﻿using FlowerShop.Server.Persistence.OrderEntity;
 using Microsoft.AspNetCore.Cors;
 using Microsoft.AspNetCore.Mvc;
 
