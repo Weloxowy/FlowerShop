@@ -1,7 +1,7 @@
 ﻿using FluentNHibernate.Mapping;
 
-namespace FlowerShop.Server.Models.AddressEntity;
-
+namespace FlowerShop.Server.Models.AddressEntity
+{
 public class AddressEntityMapping : ClassMap<AddressEntity>
 {
     readonly string tablename = nameof(AddressEntity);
@@ -14,7 +14,8 @@ public class AddressEntityMapping : ClassMap<AddressEntity>
         Map(x => x.City);
         Map(x => x.Voivodeship);
         Map(x => x.Country);
-        Map(x => x.User);
+        Map(x => x.UserAddress);
         Table(tablename);
     }
+}
 }

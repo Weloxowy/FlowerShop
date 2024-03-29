@@ -26,9 +26,9 @@ public class _202423030001_CreateTable : Migration
                 .WithColumn(nameof(AddressEntity.City)).AsString().NotNullable()
                 .WithColumn(nameof(AddressEntity.Voivodeship)).AsString().NotNullable()
                 .WithColumn(nameof(AddressEntity.Country)).AsString().NotNullable()
-                .WithColumn("User").AsGuid().NotNullable()
+                .WithColumn("UserAddress").AsGuid().NotNullable()
                 ;
-            Create.ForeignKey("FK_User_Address").FromTable("AddressEntity").ForeignColumn("User").ToTable("UserEntity").PrimaryColumn("id");
+            Create.ForeignKey("FK_User_Address").FromTable("AddressEntity").ForeignColumn("UserAddress").ToTable("UserEntity").PrimaryColumn("id");
         }
     }
 }

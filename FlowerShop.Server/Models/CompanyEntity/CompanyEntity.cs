@@ -1,6 +1,6 @@
 ﻿using System.Diagnostics.Metrics;
 
-namespace FlowerShop.Server.Models
+namespace FlowerShop.Server.Models.CompanyEntity
 {
     public class CompanyEntity
     {

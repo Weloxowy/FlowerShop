@@ -1,6 +1,6 @@
 ﻿using FluentNHibernate.Mapping;
 
-namespace FlowerShop.Server.Models
+namespace FlowerShop.Server.Models.CompanyEntity
 {
     public class CompanyEntityMapping : ClassMap<CompanyEntity>
     {

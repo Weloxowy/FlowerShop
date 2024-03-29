@@ -1,5 +1,4 @@
-﻿using FlowerShop.Server.Models;
-using FlowerShop.Server.Models.AddressEntity;
+﻿using FlowerShop.Server.Models.AddressEntity;
 
 namespace FlowerShop.Server.Persistence.AddressEntity
 {

@@ -10,20 +10,20 @@ public class CompanyEntityController : ControllerBase
 {
     private readonly CompanyEntityService _companyEntityService = new CompanyEntityService();
     [HttpGet]
-    public ActionResult<IEnumerable<Models.CompanyEntity>> GetAll()
+    public ActionResult<IEnumerable<Models.CompanyEntity.CompanyEntity>> GetAll()
     {
         using (var session = NHibernateHelper.OpenSession())
         {
-            var companyEntities = session.Query<Models.CompanyEntity>().ToList();
+            var companyEntities = session.Query<Models.CompanyEntity.CompanyEntity>().ToList();
             return Ok(companyEntities);
         }
     }
     [HttpGet("{id}")]
-    public ActionResult<Models.CompanyEntity> GetById(Guid id)
+    public ActionResult<Models.CompanyEntity.CompanyEntity> GetById(Guid id)
     {
         using (var session = NHibernateHelper.OpenSession())
         {
-            var companyEntity = session.Get<Models.CompanyEntity>(id);
+            var companyEntity = session.Get<Models.CompanyEntity.CompanyEntity>(id);
 
             if (companyEntity == null)
             {
@@ -35,7 +35,7 @@ public class CompanyEntityController : ControllerBase
 
     }
     [HttpPost]
-    public ActionResult<Models.CompanyEntity> CreateCompanyEntity([FromBody] Models.CompanyEntity companyEntity)
+    public ActionResult<Models.CompanyEntity.CompanyEntity> CreateCompanyEntity([FromBody] Models.CompanyEntity.CompanyEntity companyEntity)
     {
         if (companyEntity == null)
         {
@@ -69,7 +69,7 @@ public class CompanyEntityController : ControllerBase
             {
                 try
                 {
-                    var companyEntity = session.Get<Models.CompanyEntity>(id);
+                    var companyEntity = session.Get<Models.CompanyEntity.CompanyEntity>(id);
 
                     if (companyEntity == null)
                     {

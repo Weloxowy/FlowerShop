@@ -15,7 +15,7 @@ namespace FlowerShop.Server.Models.ProductEntity
             Map(x => x.Unit).CustomType<Unit>();
             Map(x => x.IsAvaible);
             Map(x => x.StockQuantity);
-            Map(x => x.ImageUrl).CustomType("string[]").Column("ImageUrl");
+            Map(x => x.ImageUrl);
             Map(x => x.Category);
             
             Table(tablename);

@@ -14,6 +14,7 @@ using FlowerShop.Server.Models.ProductEntity;
 using FlowerShop.Server.Models.OrderEntity;
 using FlowerShop.Server.Models.CategoryEntity;
 using FlowerShop.Server.Models.OrderDetailsEntity;
+using FlowerShop.Server.Models.CompanyEntity;
 
 namespace FlowerShop.Server;
 
@@ -40,7 +41,9 @@ public class NHibernateHelper
                             m.FluentMappings.AddFromAssemblyOf<KlientEntity>()
                         ) Przykład mapowania TODO NIE ZAPOMINAĆ O MAPOWANIACH KOLEDZY*/ 
                         .Mappings(m =>
-                            m.FluentMappings.AddFromAssemblyOf<TestEntity>())        
+                            m.FluentMappings.AddFromAssemblyOf<TestEntity>())
+                        .Mappings(m =>
+                            m.FluentMappings.AddFromAssemblyOf<UserEntity>().AddFromAssemblyOf<UserRank>())
                          .Mappings(m =>
                             m.FluentMappings.AddFromAssemblyOf<AddressEntity>())
                          .Mappings(m =>
@@ -50,11 +53,9 @@ public class NHibernateHelper
                          .Mappings(m =>
                             m.FluentMappings.AddFromAssemblyOf<CategoryEntity>())
                          .Mappings(m =>
-                            m.FluentMappings.AddFromAssemblyOf<OrderDetailsEntity>())
-                         .Mappings(m =>
-                            m.FluentMappings.AddFromAssemblyOf<UserEntity>().AddFromAssemblyOf<UserRank>())
-                         .Mappings(m =>
                             m.FluentMappings.AddFromAssemblyOf<ProductEntity>().AddFromAssemblyOf<Unit>())
+                         .Mappings(m =>
+                            m.FluentMappings.AddFromAssemblyOf<OrderDetailsEntity>())
                         .ExposeConfiguration(cfg => new SchemaUpdate(cfg).Execute(false, true))
                         .BuildSessionFactory();
 

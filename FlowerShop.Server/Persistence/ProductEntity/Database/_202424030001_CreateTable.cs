@@ -27,7 +27,7 @@ namespace FlowerShop.Server.Models.ProductEntity.Database
                     .WithColumn(nameof(ProductEntity.StockQuantity)).AsInt32().NotNullable()
                     .WithColumn(nameof(ProductEntity.IsAvaible)).AsBoolean().NotNullable()
                     .WithColumn(nameof(ProductEntity.Unit)).AsInt32().NotNullable()
-                    .WithColumn(nameof(ProductEntity.ImageUrl)).AsString(int.MaxValue).NotNullable()
+                    .WithColumn(nameof(ProductEntity.ImageUrl)).AsString().NotNullable()
                     .WithColumn("Category").AsGuid().NotNullable()
                 ;
                 Create.ForeignKey("FK_Category_Product").FromTable("ProductEntity").ForeignColumn("Category").ToTable("CategoryEntity").PrimaryColumn("id");
