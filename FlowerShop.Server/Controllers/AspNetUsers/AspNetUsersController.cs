@@ -3,6 +3,7 @@ using FlowerShop.Server.Persistence.AddressEntity;
 using FlowerShop.Server.Persistence.CategoryEntity;
 using FlowerShop.Server.Persistence.UserEntity;
 using Microsoft.AspNetCore.Cors;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 
 namespace FlowerShop.Server.Controllers.CategoryEntity
@@ -54,6 +55,9 @@ namespace FlowerShop.Server.Controllers.CategoryEntity
                 {
                     try
                     {
+                        var passwordHasher = new PasswordHasher<AspNetUsers>();
+                        string hashedPassword = passwordHasher.HashPassword(null, testEntity.Password);
+                        testEntity.PasswordHash = hashedPassword;
                         var existingUser = session.Query<AspNetUsers>().FirstOrDefault(u => u.EmailAddress == testEntity.EmailAddress);
                         if (existingUser != null)
                         {
@@ -69,8 +73,6 @@ namespace FlowerShop.Server.Controllers.CategoryEntity
                             return Conflict("Password is too short");
                         }
                         session.Save(testEntity);
-                   
-                        testEntity.Password = _userEntityService.HashPassword(testEntity.Password, 16);
                         transaction.Commit();
                         return CreatedAtAction(nameof(GetById), new { id = testEntity.Id }, testEntity);
                     }
