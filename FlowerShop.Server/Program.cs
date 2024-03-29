@@ -1,8 +1,13 @@
 using System;
 using System.Reflection;
+using System.Security.Claims;
+using FlowerShop.Server.Models.UserEntity;
 using FluentAssertions.Common;
 using FluentMigrator.Runner;
 using Microsoft.AspNetCore.Builder;
+using Microsoft.AspNetCore.Identity;
+using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 
@@ -27,6 +32,18 @@ builder.Services.AddCors(options =>
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
+
+
+builder.Services.AddDbContext<DataContext>(options =>
+    options.UseSqlServer(
+        "Server=localhost\\SQLEXPRESS;Database=Kwiaciarnia;Integrated Security=SSPI;Application Name=Kwiaciarnia; TrustServerCertificate=true;"));
+builder.Services.AddAuthorization();
+builder.Services.AddIdentityApiEndpoints<UserEntity>()
+    .AddEntityFrameworkStores<DataContext>();
+
+
+
+
 builder.Services.AddFluentMigratorCore() // Move FluentMigrator registration here
     .ConfigureRunner(c =>
     {
@@ -36,7 +53,11 @@ builder.Services.AddFluentMigratorCore() // Move FluentMigrator registration her
     })
     .AddLogging(config => config.AddFluentMigratorConsole());
 
+
 var app = builder.Build();
+
+app.MapIdentityApi<UserEntity>();
+
 using var scope = app.Services.CreateScope();
 var migrator = scope.ServiceProvider.GetService<IMigrationRunner>();
 
@@ -65,7 +86,11 @@ app.UseHttpsRedirection();
 app.UseAuthorization();
 app.UseCors("AllowAllOrigins");
 app.MapControllers();
-
 app.MapFallbackToFile("/index.html");
 
 app.Run();
+
+class DataContext : IdentityDbContext<UserEntity>
+{
+    public DataContext(DbContextOptions<DataContext> options) : base(options){}
+}

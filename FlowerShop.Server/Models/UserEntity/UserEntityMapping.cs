@@ -7,7 +7,6 @@ namespace FlowerShop.Server.Models.UserEntity
         readonly string tablename = nameof(UserEntity);
         public UserEntityMapping() 
         {
-            Id(x => x.id).GeneratedBy.Guid();
             Map(x => x.Name);
             Map(x => x.Surname);
             Map(x => x.TelephoneNumber);

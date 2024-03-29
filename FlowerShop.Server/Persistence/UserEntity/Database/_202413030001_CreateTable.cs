@@ -11,7 +11,6 @@ namespace FlowerShop.Server.Models.UserEntity.Database
             if (!Schema.Table(tableName).Exists())
             {
                 Create.Table(tableName)
-                    .WithColumn(nameof(UserEntity.id)).AsGuid().NotNullable().PrimaryKey()
                     .WithColumn(nameof(UserEntity.Name)).AsString().NotNullable()
                     .WithColumn(nameof(UserEntity.Surname)).AsString().Nullable()
                     .WithColumn(nameof(UserEntity.TelephoneNumber)).AsString().Nullable()

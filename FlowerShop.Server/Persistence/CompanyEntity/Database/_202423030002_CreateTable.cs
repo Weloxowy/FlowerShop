@@ -27,7 +27,7 @@ public class _202423030002_CreateTable : Migration
                 .WithColumn(nameof(Models.CompanyEntity.CompanyEntity.User)).AsGuid().NotNullable()
                 ;
                 Create.ForeignKey("FK_Company_Address").FromTable("CompanyEntity").ForeignColumn("CompanyAddress").ToTable("AddressEntity").PrimaryColumn("id");
-                Create.ForeignKey("FK_Company_User").FromTable("CompanyEntity").ForeignColumn("User").ToTable("UserEntity").PrimaryColumn("id");
+               // Create.ForeignKey("FK_Company_User").FromTable("CompanyEntity").ForeignColumn("User").ToTable("UserEntity").PrimaryColumn("id");
 
 
         }
