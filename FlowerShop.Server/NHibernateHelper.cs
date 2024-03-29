@@ -3,8 +3,17 @@ using FluentNHibernate.Cfg.Db;
 using NHibernate;
 using NHibernate.Tool.hbm2ddl;
 using System.Data.SqlClient;
+using FluentNHibernate.Cfg;
+using FluentNHibernate.Cfg.Db;
+using NHibernate;
+using NHibernate.Tool.hbm2ddl;
 using FlowerShop.Server.Models;
 using FlowerShop.Server.Models.UserEntity;
+using FlowerShop.Server.Models.AddressEntity;
+using FlowerShop.Server.Models.ProductEntity;
+using FlowerShop.Server.Models.OrderEntity;
+using FlowerShop.Server.Models.CategoryEntity;
+using FlowerShop.Server.Models.OrderDetailsEntity;
 
 namespace FlowerShop.Server;
 
@@ -31,9 +40,21 @@ public class NHibernateHelper
                             m.FluentMappings.AddFromAssemblyOf<KlientEntity>()
                         ) Przykład mapowania TODO NIE ZAPOMINAĆ O MAPOWANIACH KOLEDZY*/ 
                         .Mappings(m =>
-                            m.FluentMappings.AddFromAssemblyOf<TestEntity>())
+                            m.FluentMappings.AddFromAssemblyOf<TestEntity>())        
                          .Mappings(m =>
-                            m.FluentMappings.AddFromAssemblyOf<UserEntity>())
+                            m.FluentMappings.AddFromAssemblyOf<AddressEntity>())
+                         .Mappings(m =>
+                            m.FluentMappings.AddFromAssemblyOf<CompanyEntity>())
+                         .Mappings(m =>
+                            m.FluentMappings.AddFromAssemblyOf<OrderEntity>())
+                         .Mappings(m =>
+                            m.FluentMappings.AddFromAssemblyOf<CategoryEntity>())
+                         .Mappings(m =>
+                            m.FluentMappings.AddFromAssemblyOf<OrderDetailsEntity>())
+                         .Mappings(m =>
+                            m.FluentMappings.AddFromAssemblyOf<UserEntity>().AddFromAssemblyOf<UserRank>())
+                         .Mappings(m =>
+                            m.FluentMappings.AddFromAssemblyOf<ProductEntity>().AddFromAssemblyOf<Unit>())
                         .ExposeConfiguration(cfg => new SchemaUpdate(cfg).Execute(false, true))
                         .BuildSessionFactory();
 

@@ -4,7 +4,7 @@
     {
         Visitor = 0, //Not confirmed user
         User = 1, //Confirmed user
-        Worker = 2, 
+        Employee = 2, 
         Admin = 3,
     }
 }

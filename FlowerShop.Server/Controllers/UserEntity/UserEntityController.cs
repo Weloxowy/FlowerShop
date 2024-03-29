@@ -47,6 +47,7 @@ namespace FlowerShop.Server.Controllers.User;
         {
             return BadRequest("Invalid data");
         }
+
         using (var session = NHibernateHelper.OpenSession())
         {
             using (var transaction = session.BeginTransaction())
@@ -58,18 +59,18 @@ namespace FlowerShop.Server.Controllers.User;
                     {
                         return Conflict("Email address already exists");
                     }
-                    UserEntityService userEntityService = new UserEntityService();
-                    if (!userEntityService.VerifyEmail(testEntity.EmailAddress))
+                    //UserEntityService userEntityService = new UserEntityService();
+                    if (!_userEntityService.VerifyEmail(testEntity.EmailAddress))
                     {
                         return Conflict("Email address is wrong");
                     }
-                    if (!userEntityService.VerifyPassword(testEntity.Password))
+                    if (!_userEntityService.VerifyPassword(testEntity.Password))
                     {
                         return Conflict("Password is too short");
                     }
                     session.Save(testEntity);
                    
-                    testEntity.Password = userEntityService.HashPassword(testEntity.Password, 16);
+                    testEntity.Password = _userEntityService.HashPassword(testEntity.Password, 16);
                     transaction.Commit();
                     return CreatedAtAction(nameof(GetById), new { id = testEntity.id }, testEntity);
                 }
@@ -116,41 +117,62 @@ namespace FlowerShop.Server.Controllers.User;
             }
         }
     }
-    [HttpGet("users/login/{login}")]
-    public ActionResult<Models.UserEntity.UserEntity> LoginVerification(string login, string password)
+    [HttpPut]
+    public ActionResult<Models.UserEntity.UserEntity> EditUserEntity([FromBody] Models.UserEntity.UserEntity userEntity)
     {
+        if (userEntity == null)
+        {
+            return BadRequest("Invalid data");
+        }
+
         using (var session = NHibernateHelper.OpenSession())
         {
-            try {
-                var userEntity = session.QueryOver<Models.UserEntity.UserEntity>()
-                                    .Where(u => u.Login == login)
-                                    .SingleOrDefault();
-
-                if (userEntity == null)
-                {
-                    Console.WriteLine("Brak dopasowania");
-                    return NotFound();
-                }
-
-                UserEntityService user = new UserEntityService();
-                bool passwordVerified = user.VerifyPassword(password, userEntity.Password);
-
-                if (!passwordVerified)
-                {
-                    Console.WriteLine("Nieprawidłowe hasło");
-                    return Unauthorized();
-                }
-
-                Console.WriteLine("Działa");
-                return Ok(userEntity);
-                }
-            catch (Exception ex)
+            using (var transaction = session.BeginTransaction())
             {
-                return Unauthorized();
+                try
+                {
+
+                    var existingUser = session.Query<Models.UserEntity.UserEntity>().FirstOrDefault(u => u.id == userEntity.id);
+                    if (existingUser == null)
+                    {
+                        return NotFound("User not found");
+                    }
+
+                   
+                    var userWithSameEmail = session.Query<Models.UserEntity.UserEntity>().FirstOrDefault(u => u.EmailAddress == userEntity.EmailAddress && u.id != userEntity.id);
+                    if (userWithSameEmail != null)
+                    {
+                        return Conflict("Email address already exists");
+                    }
+
+
+                    if (!_userEntityService.VerifyEmail(userEntity.EmailAddress))
+                    {
+                        return Conflict("Email address is wrong");
+                    }
+                    if (!_userEntityService.VerifyPassword(userEntity.Password))
+                    {
+                        return Conflict("Password is too short");
+                    }
+
+
+                    existingUser.EmailAddress = userEntity.EmailAddress;
+                    existingUser.Password = _userEntityService.HashPassword(userEntity.Password, 16);
+
+
+                    session.Update(existingUser);
+                    transaction.Commit();
+
+                    return Ok(existingUser);
+                }
+                catch (Exception ex)
+                {
+                    transaction.Rollback();
+                    return StatusCode(StatusCodes.Status500InternalServerError, $"Error: {ex.Message}");
+                }
             }
         }
     }
-
 
 }
 

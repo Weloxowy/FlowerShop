@@ -21,16 +21,7 @@ namespace FlowerShop.Server.Models.UserEntity.Database
                     .WithColumn(nameof(UserEntity.IsUserProfileBlocked)).AsBoolean().Nullable()
                     .WithColumn(nameof(UserEntity.IsUserProfileConfirmed)).AsBoolean().Nullable()
                     .WithColumn(nameof(UserEntity.UserRank)).AsInt32().Nullable()
-                    /*
-                    .WithColumn(nameof(UserEntity.Address)).AsGuid()
-                    .WithColumn(nameof(UserEntity.Payment)).AsGuid()
-                    .WithColumn(nameof(UserEntity.Company)).AsGuid()
-                    Create.ForeignKey("FK_Address").FromTable(tableName).ForeignColumn("Address").ToTable("AddressEntity").PrimaryColumn("id");
-                    Create.ForeignKey("FK_Payment").FromTable(tableName).ForeignColumn("Payment").ToTable("PaymentEntity").PrimaryColumn("id");
-                    Create.ForeignKey("FK_Company").FromTable(tableName).ForeignColumn("Company").ToTable("CompanyEntity").PrimaryColumn("id");
-                    */
                     ;
-
             }
         }
 

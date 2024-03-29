@@ -1,47 +1,43 @@
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using FlowerShop.Server.Persistence.TestEntity;
+﻿using FlowerShop.Server.Persistence.CompanyEntity;
 using Microsoft.AspNetCore.Cors;
-using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 
-namespace FlowerShop.Server.Controllers.TestEntity;
+namespace FlowerShop.Server.Controllers.CompanyEntity;
 [EnableCors("AllowAllOrigins")]
 [Route("api/[controller]")]
 [ApiController]
-public class TestEntityController : ControllerBase
+public class CompanyEntityController : ControllerBase
 {
-    private readonly TestEntityService _testEntityService = new TestEntityService();
+    private readonly CompanyEntityService _companyEntityService = new CompanyEntityService();
     [HttpGet]
-    public ActionResult<IEnumerable<Models.TestEntity>> GetAll()
+    public ActionResult<IEnumerable<Models.CompanyEntity>> GetAll()
     {
         using (var session = NHibernateHelper.OpenSession())
         {
-            var testEntities = session.Query<Models.TestEntity>().ToList();
-            return Ok(testEntities);
+            var companyEntities = session.Query<Models.CompanyEntity>().ToList();
+            return Ok(companyEntities);
         }
     }
     [HttpGet("{id}")]
-    public ActionResult<Models.TestEntity> GetById(Guid id)
+    public ActionResult<Models.CompanyEntity> GetById(Guid id)
     {
         using (var session = NHibernateHelper.OpenSession())
         {
-            var testEntity = session.Get<Models.TestEntity>(id);
+            var companyEntity = session.Get<Models.CompanyEntity>(id);
 
-            if (testEntity == null)
+            if (companyEntity == null)
             {
                 return NotFound();
             }
 
-            return Ok(testEntity);
+            return Ok(companyEntity);
         }
 
     }
     [HttpPost]
-    public ActionResult<Models.TestEntity> CreateKlientEntity([FromBody] Models.TestEntity testEntity)
+    public ActionResult<Models.CompanyEntity> CreateCompanyEntity([FromBody] Models.CompanyEntity companyEntity)
     {
-        if (testEntity == null)
+        if (companyEntity == null)
         {
             return BadRequest("Invalid data");
         }
@@ -51,9 +47,9 @@ public class TestEntityController : ControllerBase
             {
                 try
                 {
-                    session.Save(testEntity);
+                    session.Save(companyEntity);
                     transaction.Commit();
-                    return CreatedAtAction(nameof(GetById), new { id = testEntity.id }, testEntity);
+                    return CreatedAtAction(nameof(GetById), new { id = companyEntity.id }, companyEntity);
                 }
                 catch (Exception ex)
                 {
@@ -65,7 +61,7 @@ public class TestEntityController : ControllerBase
 
     }
     [HttpDelete("{id}")]
-    public ActionResult DeleteKlientEntity(Guid id)
+    public ActionResult DeleteCompanyEntity(Guid id)
     {
         using (var session = NHibernateHelper.OpenSession())
         {
@@ -73,15 +69,15 @@ public class TestEntityController : ControllerBase
             {
                 try
                 {
-                    var testEntity = session.Get<Models.TestEntity>(id);
+                    var companyEntity = session.Get<Models.CompanyEntity>(id);
 
-                    if (testEntity == null)
+                    if (companyEntity == null)
                     {
                         return NotFound();
                     }
 
 
-                    session.Delete(testEntity);
+                    session.Delete(companyEntity);
 
 
                     transaction.Commit();
@@ -97,5 +93,4 @@ public class TestEntityController : ControllerBase
             }
         }
     }
-
 }

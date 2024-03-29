@@ -17,9 +17,6 @@ namespace FlowerShop.Server.Models.UserEntity
             Map(x => x.IsUserProfileConfirmed);
             Map(x => x.IsUserProfileBlocked);
             Map(x => x.UserRank).CustomType<UserRank>();
-            //Map(x => x.Address);
-            //Map(x => x.Payment);
-            //Map(x => x.Company);
             Table(tablename);
         }
     }

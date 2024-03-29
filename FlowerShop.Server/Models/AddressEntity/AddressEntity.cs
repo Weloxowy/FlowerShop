@@ -1,0 +1,27 @@
+﻿namespace FlowerShop.Server.Models.AddressEntity;
+
+public class AddressEntity
+{
+    public AddressEntity(): base()
+    { }
+
+    public AddressEntity(Guid id, string fullStreet, string postalCode, string city, string voivodeship, string country, Guid user)
+    {
+        this.id = id;
+        FullStreet = fullStreet;
+        PostalCode = postalCode;
+        City = city;
+        Voivodeship = voivodeship;
+        Country = country;
+        User = user;
+    }
+
+    public virtual Guid id { get; set; }
+    public virtual string FullStreet { get; set; }
+    public virtual string PostalCode { get; set; }
+    public virtual string City { get; set; }
+    public virtual string Voivodeship { get; set; }
+    public virtual string Country { get; set; }
+    public virtual Guid User { get; set; }
+
+}

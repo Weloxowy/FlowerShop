@@ -4,6 +4,7 @@ namespace FlowerShop.Server.Persistence.User
 {
     public class UserEntityRepository : IUserEntityRepository
     {
+        //przenieść do PATCH/UPDATE
         public bool Edit(Guid id, string name, string surname, string telephone, string email, string login, string password, bool isConfirmed, bool isBlocked, UserRank userRank)
         {
             using (var session = NHibernateHelper.OpenSession())
