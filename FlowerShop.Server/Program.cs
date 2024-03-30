@@ -10,13 +10,14 @@ using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
+using System.Diagnostics;
 
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
 builder.Services.AddControllers();
 
-//adding CORS headers
+// Adding CORS headers
 builder.Services.AddCors(options =>
 {
     options.AddPolicy("AllowAllOrigins",
@@ -28,11 +29,9 @@ builder.Services.AddCors(options =>
         });
 });
 
-
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
-
 
 builder.Services.AddDbContext<DataContext>(options =>
     options.UseSqlServer(
@@ -40,9 +39,6 @@ builder.Services.AddDbContext<DataContext>(options =>
 builder.Services.AddAuthorization();
 builder.Services.AddIdentityApiEndpoints<AspNetUsers>()
     .AddEntityFrameworkStores<DataContext>();
-
-
-
 
 builder.Services.AddFluentMigratorCore() // Move FluentMigrator registration here
     .ConfigureRunner(c =>
@@ -52,7 +48,6 @@ builder.Services.AddFluentMigratorCore() // Move FluentMigrator registration her
             .ScanIn(Assembly.GetExecutingAssembly()).For.All();
     })
     .AddLogging(config => config.AddFluentMigratorConsole());
-
 
 var app = builder.Build();
 
@@ -87,10 +82,26 @@ app.UseAuthorization();
 app.UseCors("AllowAllOrigins");
 app.MapControllers();
 app.MapFallbackToFile("/index.html");
-
+OpenBrowser("https://localhost:5173/");
 app.Run();
+
+
+// Method to open default browser
+static void OpenBrowser(string url)
+{
+    try
+    {
+        Process.Start(new ProcessStartInfo("cmd", $"/c start {url}") { CreateNoWindow = true });
+    }
+    catch (Exception ex)
+    {
+        Console.WriteLine($"Failed to open browser: {ex.Message}");
+    }
+}
 
 class DataContext : IdentityDbContext<AspNetUsers>
 {
     public DataContext(DbContextOptions<DataContext> options) : base(options){}
 }
+
+// Open the browser on launch
