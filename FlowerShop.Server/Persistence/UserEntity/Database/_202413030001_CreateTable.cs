@@ -11,11 +11,8 @@ namespace FlowerShop.Server.Models.UserEntity.Database
             if (!Schema.Table(tableName).Exists())
             {
                 Create.Table(tableName)
-                    .WithColumn(nameof(AspNetUsers.Name)).AsString().NotNullable()
+                    .WithColumn(nameof(AspNetUsers.FirstName)).AsString().NotNullable()
                     .WithColumn(nameof(AspNetUsers.Surname)).AsString().Nullable()
-                    .WithColumn(nameof(AspNetUsers.TelephoneNumber)).AsString().Nullable()
-                    .WithColumn(nameof(AspNetUsers.EmailAddress)).AsString().NotNullable()
-                    .WithColumn(nameof(AspNetUsers.Login)).AsString().Nullable()
                     .WithColumn(nameof(AspNetUsers.Password)).AsString().Nullable()
                     .WithColumn(nameof(AspNetUsers.IsUserProfileBlocked)).AsBoolean().Nullable()
                     .WithColumn(nameof(AspNetUsers.IsUserProfileConfirmed)).AsBoolean().Nullable()

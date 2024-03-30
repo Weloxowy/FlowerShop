@@ -16,9 +16,8 @@ import {
 import './App.css';
 import '@mantine/core/styles.css';
 import { MantineProvider } from '@mantine/core';
-// @ts-ignore
 import React, { useState, useEffect } from "react";
-import {HeaderMenu} from "./HeaderMenu";
+
 export default function App(props: PaperProps) {
     const [type, toggle] = useToggle(['login', 'register']);
     const form = useForm({
@@ -31,26 +30,26 @@ export default function App(props: PaperProps) {
 
         validate: {
             email: (val) => (/^\S+@\S+$/.test(val) ? null : 'Invalid email'),
-            password: (val) => (val.length <= 8 ? 'Password should include at least 8 characters' : null),
+            password: (val) => (val.length <= 4 ? 'Password should include at least 4 characters' : null),
         },
     });
+
     async function handleRegister() {
-        const url = "https://localhost:7142/api/UserEntity";
+        const url = "https://localhost:7142/api/AspNetUsers";
         const data = {
-            Name: form.values.name,
-            EmailAddress: form.values.email,
+            UserName: form.values.email,
+            Email: form.values.email,
             Password: form.values.password,
-            Login: "ziara", 
-            TelephoneNumber: "123321123",
-            Surname: "Ziara"
+
 
         }
+
         try {
             const response = await fetch(url, {
                 method: 'POST',
                 headers: {
                     'Content-Type':
-                    'application/json',
+                        'application/json',
                 },
                 body: JSON.stringify(data),
             });
@@ -66,6 +65,39 @@ export default function App(props: PaperProps) {
             console.error('Error creating entity:', error);
         }
     }
+
+    async function handleLogin() {
+        const url = "https://localhost:7142/login";
+        const data = {
+
+            Email: form.values.email,
+            Password: form.values.password,
+
+
+        }
+
+        try {
+            const response = await fetch(url, {
+                method: 'POST',
+                headers: {
+                    'Content-Type':
+                        'application/json',
+                },
+                body: JSON.stringify(data),
+            });
+
+            if (!response.ok) {
+                const errorMessage = await response.text();
+                throw new Error(`HTTP error! Status: ${response.status}, Message: ${errorMessage}`);
+            }
+
+            // Entity created successfully
+            console.log('Entity created successfully1');
+        } catch (error) {
+            console.error('Error creating entity:', error);
+        }
+    }
+
     const [users, setUsers] = useState([]);
 
     useEffect(() => {
@@ -85,73 +117,76 @@ export default function App(props: PaperProps) {
 
         fetchData();
     }, []);
-    return <MantineProvider>{
 
-        <Paper radius="md" p="xl" withBorder {...props}>
-            <Text size="lg" fw={500}>
-                Welcome to Mantine, {type} with
-            </Text>
-            <Divider label="Or continue with email" labelPosition="center" my="lg" />
+    return (
+        <MantineProvider>
+            <Paper radius="md" p="xl" withBorder {...props}>
+                <Text size="lg" fw={500}>
+                    Welcome to Mantine, {type} with
+                </Text>
 
-            <form onSubmit={form.onSubmit(() => { })}>
-                <Stack>
-                    {type === 'register' && (
+                <Divider label="Or continue with email" labelPosition="center" my="lg" />
+
+                <form onSubmit={form.onSubmit(() => { })}>
+                    <Stack>
+                        {type === 'register' && (
+                            <TextInput
+                                label="Name"
+                                placeholder="Your name"
+                                value={form.values.name}
+                                onChange={(event) => form.setFieldValue('name', event.currentTarget.value)}
+                                radius="md"
+                            />
+                        )}
+
                         <TextInput
-                            label="Imię i nazwisko"
-                            placeholder="Imię i nazwisko"
-                            value={form.values.name}
-                            onChange={(event) => form.setFieldValue('name', event.currentTarget.value)}
+                            required
+                            label="Email"
+                            placeholder="hello@mantine.dev"
+                            value={form.values.email}
+                            onChange={(event) => form.setFieldValue('email', event.currentTarget.value)}
+                            error={form.errors.email && 'Invalid email'}
                             radius="md"
                         />
-                    )}
 
-                    <TextInput
-                        required
-                        label="Email"
-                        placeholder="hello@mantine.dev"
-                        value={form.values.email}
-                        onChange={(event) => form.setFieldValue('email', event.currentTarget.value)}
-                        error={form.errors.email && 'Nieprawidłowy adres email'}
-                        radius="md"
-                    />
-
-                    <PasswordInput
-                        required
-                        label="Hasło"
-                        placeholder="Twoje hasło"
-                        value={form.values.password}
-                        onChange={(event) => form.setFieldValue('password', event.currentTarget.value)}
-                        error={form.errors.password && 'Hasło powinno posiadać 8 znaków, w tym jedną dużą literę'}
-                        radius="md"
-                    />
-
-                    {type === 'register' && (
-                        <Checkbox
-                            label="Akceptuje warunki serwisu."
-                            checked={form.values.terms}
-                            onChange={(event) => form.setFieldValue('terms', event.currentTarget.checked)}
+                        <PasswordInput
+                            required
+                            label="Password"
+                            placeholder="Your password"
+                            value={form.values.password}
+                            onChange={(event) => form.setFieldValue('password', event.currentTarget.value)}
+                            error={form.errors.password && 'Password should include at least 6 characters'}
+                            radius="md"
                         />
-                    )}
+
+                        {type === 'register' && (
+                            <Checkbox
+                                label="I accept terms and conditions"
+                                checked={form.values.terms}
+                                onChange={(event) => form.setFieldValue('terms', event.currentTarget.checked)}
+                            />
+                        )}
+                    </Stack>
+                    <Group justify="space-between" mt="xl">
+                        <Anchor component="button" type="button" c="dimmed" onClick={() => toggle()} size="xs">
+                            {type === 'register'
+                                ? 'Already have an account? Login'
+                                : "Don't have an account? Register"}
+                        </Anchor>
+                        <Button type="submit" radius="xl" onClick={type === 'register' ? handleRegister : handleLogin}>
+                            {upperFirst(type)}
+                        </Button>
+                    </Group>
+                </form>
+                <Stack spacing="md">
+                    {users.map((user) => (
+                        <div key={user.id}>
+                            <Text>{user.name}</Text>
+                            <Text>{user.surname}</Text>
+                        </div>
+                    ))}
                 </Stack>
-                <Group justify="space-between" mt="xl">
-                    <Anchor component="button" type="button" c="dimmed" onClick={() => toggle()} size="xs">
-                        {type === 'register'
-                            ? 'Posiadasz już konto? Zaloguj się'
-                            : "Nie posiadasz konta? Zarejestruj się"}
-                    </Anchor>
-                    <Button type="submit" radius="xl" onClick={handleRegister}>
-                        {upperFirst(type)}
-                    </Button>
-                </Group>
-            </form>
-            <Stack spacing="md">
-                {users.map((user) => (
-                    <div key={user.id}>
-                        <Text>{user.name}</Text>
-                        <Text>{user.surname}</Text>
-                    </div>
-                ))}
-            </Stack>
-        </Paper>
-    }</MantineProvider>;
+            </Paper>
+        </MantineProvider>
+    );
 }
