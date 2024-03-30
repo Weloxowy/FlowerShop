@@ -8,6 +8,7 @@ import {
 } from "react-router-dom";
 import App from "./App.tsx";
 import Home from "./Home.tsx";
+import MainPage from "./MainPage.tsx";
 //basic routing
 ReactDOM.createRoot(document.getElementById('root')).render(
     <BrowserRouter>
@@ -16,6 +17,9 @@ ReactDOM.createRoot(document.getElementById('root')).render(
         </Routes>
         <Routes>
             <Route path="/pag" element={<App />} />
+        </Routes>
+        <Routes>
+            <Route path="/main" element={<MainPage />} />
         </Routes>
     </BrowserRouter>
 )

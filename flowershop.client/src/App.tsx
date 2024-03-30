@@ -33,7 +33,6 @@ export default function App(props: PaperProps) {
             password: (val) => (val.length <= 4 ? 'Password should include at least 4 characters' : null),
         },
     });
-
     async function handleRegister() {
         const url = "https://localhost:7142/api/AspNetUsers";
         const data = {
@@ -57,6 +56,9 @@ export default function App(props: PaperProps) {
             if (!response.ok) {
                 const errorMessage = await response.text();
                 throw new Error(`HTTP error! Status: ${response.status}, Message: ${errorMessage}`);
+            }
+            else {
+                window.location.href = "/main";
             }
 
             // Entity created successfully
@@ -85,10 +87,13 @@ export default function App(props: PaperProps) {
                 },
                 body: JSON.stringify(data),
             });
-
+            
             if (!response.ok) {
+
                 const errorMessage = await response.text();
                 throw new Error(`HTTP error! Status: ${response.status}, Message: ${errorMessage}`);
+            } else {
+                window.location.href = "/main";
             }
 
             // Entity created successfully
