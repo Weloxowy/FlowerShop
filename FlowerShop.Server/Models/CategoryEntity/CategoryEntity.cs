@@ -10,14 +10,14 @@
             this.id = id;
             Name = name;
             URLName = urlName;
-            Desc = desc;
+            Description = desc;
             ImageLink = imageLink;
         }
 
         virtual public Guid id { get; set; }
         public virtual string Name { get; set; }
         public virtual string URLName { get; set; }
-        public virtual string Desc { get; set; }
+        public virtual string Description { get; set; }
         public virtual string ImageLink { get; set; } 
     }
 }

@@ -13,7 +13,7 @@ namespace FlowerShop.Server.Models.CompanyEntity
             Map(x => x.NIP);
             Map(x => x.REGON);
             Map(x => x.CompanyAddress);
-            Map(x => x.User);
+            Map(x => x.UserId);
             Table(tablename);
         }
     }

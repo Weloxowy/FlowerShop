@@ -1,0 +1,116 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="AutoImportSettings">
+    <option name="autoReloadType" value="SELECTIVE" />
+  </component>
+  <component name="ChangeListManager">
+    <list default="true" id="2cdc394c-ef38-46b7-9635-74450f59010d" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/.idea/inspectionProfiles/Project_Default.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/flowershop.client/src/HeaderMenu.module.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/flowershop.client/src/HeaderMenu.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/flowershop.client/src/Home.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/flowershop.client/src/pages/Home.module.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ConsoleApplication1/ConsoleApplication1.csproj" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/ConsoleApplication1/Program.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/ConsoleApplication1/Properties/AssemblyInfo.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/FlowerShop.Server/Models/CategoryEntity/CategoryEntity.cs" beforeDir="false" afterPath="$PROJECT_DIR$/FlowerShop.Server/Models/CategoryEntity/CategoryEntity.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/FlowerShop.Server/Models/CategoryEntity/CategoryEntityMapping.cs" beforeDir="false" afterPath="$PROJECT_DIR$/FlowerShop.Server/Models/CategoryEntity/CategoryEntityMapping.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/FlowerShop.Server/Models/CompanyEntity/CompanyEntity.cs" beforeDir="false" afterPath="$PROJECT_DIR$/FlowerShop.Server/Models/CompanyEntity/CompanyEntity.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/FlowerShop.Server/Models/CompanyEntity/CompanyEntityMapping.cs" beforeDir="false" afterPath="$PROJECT_DIR$/FlowerShop.Server/Models/CompanyEntity/CompanyEntityMapping.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/FlowerShop.Server/Persistence/CategoryEntity/Database/_202422030001_CreateTable.cs" beforeDir="false" afterPath="$PROJECT_DIR$/FlowerShop.Server/Persistence/CategoryEntity/Database/_202422030001_CreateTable.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/FlowerShop.Server/Persistence/CompanyEntity/Database/_202423030002_CreateTable.cs" beforeDir="false" afterPath="$PROJECT_DIR$/FlowerShop.Server/Persistence/CompanyEntity/Database/_202423030002_CreateTable.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/flowershop.client/package-lock.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/flowershop.client/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/flowershop.client/package.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/flowershop.client/src/App.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/flowershop.client/src/App.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/flowershop.client/src/main.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/flowershop.client/src/main.jsx" afterDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="TypeScript File" />
+        <option value="TypeScript JSX File" />
+        <option value="CSS File" />
+      </list>
+    </option>
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="GitToolBoxStore">
+    <option name="projectConfigVersion" value="5" />
+  </component>
+  <component name="MarkdownSettingsMigration">
+    <option name="stateVersion" value="1" />
+  </component>
+  <component name="ProblemsViewState">
+    <option name="selectedTabId" value="CurrentFile" />
+  </component>
+  <component name="ProjectColorInfo">{
+  &quot;customColor&quot;: &quot;&quot;,
+  &quot;associatedIndex&quot;: 6
+}</component>
+  <component name="ProjectId" id="2eNhU0wbk8AWLw6lfHubumeNoeL" />
+  <component name="ProjectLevelVcsManager">
+    <ConfirmationsSetting value="2" id="Add" />
+  </component>
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;ASKED_SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;master&quot;,
+    &quot;ignore.virus.scanning.warn.message&quot;: &quot;true&quot;,
+    &quot;javascript.nodejs.core.library.configured.version&quot;: &quot;20.10.0&quot;,
+    &quot;javascript.nodejs.core.library.typings.version&quot;: &quot;20.10.8&quot;,
+    &quot;list.type.of.created.stylesheet&quot;: &quot;CSS&quot;,
+    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.standard&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
+    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
+    &quot;node.js.selected.package.standard&quot;: &quot;&quot;,
+    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
+    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
+    &quot;ts.external.directory.path&quot;: &quot;C:\\Program Files\\JetBrains\\WebStorm 2023.2.5\\plugins\\javascript-impl\\jsLanguageServicesImpl\\external&quot;,
+    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
+  }
+}</component>
+  <component name="RecentsManager">
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Users\Pawel\source\repos\FlowerShop\flowershop.client\src\pages" />
+    </key>
+  </component>
+  <component name="SharedIndexes">
+    <attachedChunks>
+      <set>
+        <option value="bundled-js-predefined-1d06a55b98c1-56bbcd2c060c-JavaScript-WS-233.11799.229" />
+      </set>
+    </attachedChunks>
+  </component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="2cdc394c-ef38-46b7-9635-74450f59010d" name="Changes" comment="" />
+      <created>1711750954423</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1711750954423</updated>
+      <workItem from="1711750955440" duration="4696000" />
+      <workItem from="1711802649577" duration="6877000" />
+      <workItem from="1711821551316" duration="591000" />
+    </task>
+    <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="3" />
+  </component>
+</project>

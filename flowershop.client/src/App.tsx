@@ -16,7 +16,9 @@ import {
 import './App.css';
 import '@mantine/core/styles.css';
 import { MantineProvider } from '@mantine/core';
+// @ts-ignore
 import React, { useState, useEffect } from "react";
+import {HeaderMenu} from "./HeaderMenu";
 export default function App(props: PaperProps) {
     const [type, toggle] = useToggle(['login', 'register']);
     const form = useForm({
@@ -89,16 +91,14 @@ export default function App(props: PaperProps) {
             <Text size="lg" fw={500}>
                 Welcome to Mantine, {type} with
             </Text>
-
-
             <Divider label="Or continue with email" labelPosition="center" my="lg" />
 
             <form onSubmit={form.onSubmit(() => { })}>
                 <Stack>
                     {type === 'register' && (
                         <TextInput
-                            label="Name"
-                            placeholder="Your name"
+                            label="Imię i nazwisko"
+                            placeholder="Imię i nazwisko"
                             value={form.values.name}
                             onChange={(event) => form.setFieldValue('name', event.currentTarget.value)}
                             radius="md"
@@ -111,23 +111,23 @@ export default function App(props: PaperProps) {
                         placeholder="hello@mantine.dev"
                         value={form.values.email}
                         onChange={(event) => form.setFieldValue('email', event.currentTarget.value)}
-                        error={form.errors.email && 'Invalid email'}
+                        error={form.errors.email && 'Nieprawidłowy adres email'}
                         radius="md"
                     />
 
                     <PasswordInput
                         required
-                        label="Password"
-                        placeholder="Your password"
+                        label="Hasło"
+                        placeholder="Twoje hasło"
                         value={form.values.password}
                         onChange={(event) => form.setFieldValue('password', event.currentTarget.value)}
-                        error={form.errors.password && 'Password should include at least 6 characters'}
+                        error={form.errors.password && 'Hasło powinno posiadać 8 znaków, w tym jedną dużą literę'}
                         radius="md"
                     />
 
                     {type === 'register' && (
                         <Checkbox
-                            label="I accept terms and conditions"
+                            label="Akceptuje warunki serwisu."
                             checked={form.values.terms}
                             onChange={(event) => form.setFieldValue('terms', event.currentTarget.checked)}
                         />
@@ -136,8 +136,8 @@ export default function App(props: PaperProps) {
                 <Group justify="space-between" mt="xl">
                     <Anchor component="button" type="button" c="dimmed" onClick={() => toggle()} size="xs">
                         {type === 'register'
-                            ? 'Already have an account? Login'
-                            : "Don't have an account? Register"}
+                            ? 'Posiadasz już konto? Zaloguj się'
+                            : "Nie posiadasz konta? Zarejestruj się"}
                     </Anchor>
                     <Button type="submit" radius="xl" onClick={handleRegister}>
                         {upperFirst(type)}

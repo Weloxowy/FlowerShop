@@ -14,7 +14,7 @@ namespace FlowerShop.Server.Models.CompanyEntity
             this.NIP = nip;
             this.REGON = regon;
             this.CompanyAddress = companyAddress;
-            this.User = user;
+            this.UserId = user;
         }
 
         public virtual Guid id { get; set; }
@@ -22,7 +22,7 @@ namespace FlowerShop.Server.Models.CompanyEntity
         public virtual string NIP { get; set; }
         public virtual string REGON { get; set; }
        public virtual Guid CompanyAddress { get; set; } //Adres firmy może się różnić od adresu dostawy! Jeżeli to pole juest null to jest identyczne jak pole z UserEntity
-        public virtual Guid User { get; set; }
+        public virtual Guid UserId { get; set; }
 
     }
 }

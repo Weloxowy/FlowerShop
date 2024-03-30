@@ -24,7 +24,7 @@ public class _202423030002_CreateTable : Migration
                 .WithColumn(nameof(Models.CompanyEntity.CompanyEntity.NIP)).AsString().NotNullable()
                 .WithColumn(nameof(Models.CompanyEntity.CompanyEntity.CompanyName)).AsString().NotNullable()
                 .WithColumn(nameof(Models.CompanyEntity.CompanyEntity.CompanyAddress)).AsGuid().NotNullable()
-                .WithColumn(nameof(Models.CompanyEntity.CompanyEntity.User)).AsString().NotNullable()
+                .WithColumn(nameof(Models.CompanyEntity.CompanyEntity.UserId)).AsString().NotNullable()
                 ;
                 Create.ForeignKey("FK_Company_Address").FromTable("CompanyEntity").ForeignColumn("CompanyAddress").ToTable("AddressEntity").PrimaryColumn("id");
                 Create.ForeignKey("FK_Company_User").FromTable("CompanyEntity").ForeignColumn("User").ToTable("AspNetUsers").PrimaryColumn("Id");

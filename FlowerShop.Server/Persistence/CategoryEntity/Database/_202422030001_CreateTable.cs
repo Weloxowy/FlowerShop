@@ -23,7 +23,7 @@ namespace FlowerShop.Server.Models.CategoryEntity.Database
                     .WithColumn(nameof(CategoryEntity.id)).AsGuid().NotNullable().PrimaryKey()
                     .WithColumn(nameof(CategoryEntity.Name)).AsString().NotNullable()
                     .WithColumn(nameof(CategoryEntity.URLName)).AsString().NotNullable()
-                    .WithColumn(nameof(CategoryEntity.Desc)).AsString().NotNullable()
+                    .WithColumn(nameof(CategoryEntity.Description)).AsString().NotNullable()
                     .WithColumn(nameof(CategoryEntity.ImageLink)).AsString().NotNullable()
                     ;
 
