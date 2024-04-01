@@ -70,7 +70,7 @@ export default defineConfig({
             '^/api': {
                 target: 'https://localhost:7142/',
                 changeOrigin: true
-            }
+            }   
         },
         port: 5173,
         https: {

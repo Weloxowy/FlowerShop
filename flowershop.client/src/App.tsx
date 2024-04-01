@@ -58,6 +58,7 @@ export default function App(props: PaperProps) {
                 throw new Error(`HTTP error! Status: ${response.status}, Message: ${errorMessage}`);
             }
             else {
+                await handleLogin();
                 window.location.href = "/main";
             }
 
