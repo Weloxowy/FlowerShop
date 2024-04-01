@@ -87,15 +87,12 @@ export default function App(props: PaperProps) {
                 },
                 body: JSON.stringify(data),
             });
-            console.log(response.headers);
-            console.log(response);
-           // await getCookies();
             if (!response.ok) {
 
                 const errorMessage = await response.text();
                 throw new Error(`HTTP error! Status: ${response.status}, Message: ${errorMessage}`);
             } else {
-               // window.location.href = "/main";
+                window.location.href = "/main";
             }
 
             // Entity created successfully
