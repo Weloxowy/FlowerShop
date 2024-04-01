@@ -25,10 +25,10 @@ builder.Services.AddCors(options =>
     options.AddPolicy("AllowAllOrigins",
         builder =>
         {
-            builder.AllowAnyOrigin();
+            builder.WithOrigins("https://localhost:5173");
+            builder.AllowCredentials();
             builder.AllowAnyHeader();
             builder.AllowAnyMethod();
-            builder.SetIsOriginAllowedToAllowWildcardSubdomains();
         });
 });
 

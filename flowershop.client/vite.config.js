@@ -7,33 +7,6 @@ import child_process from 'child_process';
 import express from 'express';
 import cors from 'cors';
 
-
-
-const app = express();
-// Configuration for CORS
-// Configuration for CORS
-app.use((req, res, next) => {
-    const allowedOrigins = ['https://localhost:5173']; // Add more origins if needed
-    const origin = req.headers.origin;
-    console.log("Elo elo");
-    if (allowedOrigins.includes(origin)) {
-        res.setHeader('Access-Control-Allow-Origin', origin);
-    }
-    res.header('Access-Control-Allow-Methods', 'GET, POST, PUT, DELETE, OPTIONS');
-    res.header('Access-Control-Allow-Headers', 'Content-Type, Authorization');
-    res.header('Access-Control-Allow-Credentials', 'true');
-    next();
-});
-
-
-// Your API routes
-app.get('/api/AspNetUsers/info', (req, res) => {
-    // Your route handling logic here
-});
-
-// Start the Express server
-
-
 // Determine certificate paths
 const baseFolder =
     process.env.APPDATA !== undefined && process.env.APPDATA !== ''
@@ -93,6 +66,10 @@ export default defineConfig({
                 cookiePathRewrite: {
                     "*": "/"
                 }
+            },
+            '^/api': {
+                target: 'https://localhost:7142/',
+                changeOrigin: true
             }
         },
         port: 5173,
