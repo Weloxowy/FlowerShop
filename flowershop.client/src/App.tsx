@@ -128,11 +128,10 @@ export default function App(props: PaperProps) {
         const response = await fetch("https://localhost:7142/api/AspNetUsers/info", {
             credentials: 'include',
             headers: {
-                "Access-Control-Allow-Headers" : "Content-Type",
-                "Access-Control-Allow-Origin": "*",
                 'Content-Type': 'application/json',
-                "Access-Control-Allow-Methods": "OPTIONS,POST,GET,PATCH"
-            },
+                'Access-Control-Allow-Origin': '*',
+                'Access-Control-Allow-Credentials':'true'
+            }
            // mode: 'no-cors' - Przepusci zapytanie ale nie zwroci nic
         });
         const data = await response.json;

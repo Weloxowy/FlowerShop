@@ -11,6 +11,7 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using System.Diagnostics;
+using Microsoft.AspNetCore.Cors.Infrastructure;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -18,7 +19,7 @@ var builder = WebApplication.CreateBuilder(args);
 builder.Services.AddControllers();
 
 // Adding CORS headers
-/*
+
 builder.Services.AddCors(options =>
 {
     options.AddPolicy("AllowAllOrigins",
@@ -27,19 +28,10 @@ builder.Services.AddCors(options =>
             builder.AllowAnyOrigin();
             builder.AllowAnyHeader();
             builder.AllowAnyMethod();
-        });
-});*/
-builder.Services.AddCors(options =>
-{
-    options.AddPolicy("AllowSpecificOrigins",
-        builder =>
-        {
-            builder.WithOrigins("https://localhost:5173", "https://localhost:7142") // Add both frontend and backend origins
-                .AllowAnyHeader()
-                .AllowAnyMethod()
-                .AllowCredentials(); // Allow credentials
+            builder.SetIsOriginAllowedToAllowWildcardSubdomains();
         });
 });
+
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
@@ -74,10 +66,9 @@ else
 {
     throw new Exception("Migration fault");
 }
-
+app.UseCors("AllowAllOrigins");
 app.UseDefaultFiles();
 app.UseStaticFiles();
-app.UseCors("AllowSpecificOrigins");
 // Configure the HTTP request pipeline.
 if (app.Environment.IsDevelopment())
 {
