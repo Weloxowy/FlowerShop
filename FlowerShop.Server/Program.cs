@@ -18,6 +18,7 @@ var builder = WebApplication.CreateBuilder(args);
 builder.Services.AddControllers();
 
 // Adding CORS headers
+
 builder.Services.AddCors(options =>
 {
     options.AddPolicy("AllowAllOrigins",
@@ -28,6 +29,7 @@ builder.Services.AddCors(options =>
             builder.AllowAnyMethod();
         });
 });
+
 
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddEndpointsApiExplorer();
@@ -50,9 +52,7 @@ builder.Services.AddFluentMigratorCore() // Move FluentMigrator registration her
     .AddLogging(config => config.AddFluentMigratorConsole());
 
 var app = builder.Build();
-
 app.MapIdentityApi<AspNetUsers>();
-
 using var scope = app.Services.CreateScope();
 var migrator = scope.ServiceProvider.GetService<IMigrationRunner>();
 
@@ -76,10 +76,9 @@ if (app.Environment.IsDevelopment())
     app.UseSwaggerUI();
 }
 
-app.UseHttpsRedirection();
-
-app.UseAuthorization();
 app.UseCors("AllowAllOrigins");
+app.UseHttpsRedirection();
+app.UseAuthorization();
 app.MapControllers();
 app.MapFallbackToFile("/index.html");
 OpenBrowser("https://localhost:5173/");

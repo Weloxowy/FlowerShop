@@ -69,13 +69,11 @@ export default function App(props: PaperProps) {
     }
 
     async function handleLogin() {
-        const url = "https://localhost:7142/login";
+        const url = "https://localhost:7142/login?useCookies=true&useSessionCookies=true";
         const data = {
 
-            Email: form.values.email,
-            Password: form.values.password,
-
-
+            email: form.values.email,
+            password: form.values.password
         }
 
         try {
@@ -87,13 +85,14 @@ export default function App(props: PaperProps) {
                 },
                 body: JSON.stringify(data),
             });
-            
+            console.log("Elo");
+            await getCookies();
             if (!response.ok) {
 
                 const errorMessage = await response.text();
                 throw new Error(`HTTP error! Status: ${response.status}, Message: ${errorMessage}`);
             } else {
-                window.location.href = "/main";
+               // window.location.href = "/main";
             }
 
             // Entity created successfully
@@ -122,7 +121,18 @@ export default function App(props: PaperProps) {
 
         fetchData();
     }, []);
-
+    async function getCookies() {
+        const response = await fetch("https://localhost:7142/api/AspNetUsers/info", {
+            credentials: 'include',
+            method: 'GET',
+            headers: {
+                "Content-Type": "application/json"
+            },
+           // mode: 'no-cors' - Przepusci zapytanie ale nie zwroci nic
+        });
+        const data = await response.json;
+        console.log(data);
+    }
     return (
         <MantineProvider>
             <Paper radius="md" p="xl" withBorder {...props}>
@@ -178,7 +188,7 @@ export default function App(props: PaperProps) {
                                 ? 'Already have an account? Login'
                                 : "Don't have an account? Register"}
                         </Anchor>
-                        <Button type="submit" radius="xl" onClick={type === 'register' ? handleRegister : handleLogin}>
+                        <Button type="submit" radius="xl" onClick={type === 'register' ? handleRegister : getCookies}>
                             {upperFirst(type)}
                         </Button>
                     </Group>

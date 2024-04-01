@@ -1,3 +1,4 @@
+using System.Security.Claims;
 using FlowerShop.Server.Models.UserEntity;
 using FlowerShop.Server.Persistence.AddressEntity;
 using FlowerShop.Server.Persistence.CategoryEntity;
@@ -5,7 +6,8 @@ using FlowerShop.Server.Persistence.UserEntity;
 using Microsoft.AspNetCore.Cors;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
-
+using Microsoft.AspNetCore.Authentication;
+using Microsoft.AspNetCore.Http;
 namespace FlowerShop.Server.Controllers.CategoryEntity
 {
     [EnableCors("AllowAllOrigins")]
@@ -16,6 +18,46 @@ namespace FlowerShop.Server.Controllers.CategoryEntity
     {
         
         private readonly UserEntityService _userEntityService = new UserEntityService();
+        
+        [HttpGet("info")]
+        public async Task<IActionResult> GetUserInfo()
+        {
+            // Check if user is authenticated
+            var user = HttpContext.User;
+            if (user.Identity != null && user.Identity.IsAuthenticated)
+            {
+                // Retrieve user ID from claims
+                var userIdClaim = user.FindFirst(ClaimTypes.NameIdentifier);
+                if (userIdClaim == null)
+                {
+                    return BadRequest("User ID claim not found.");
+                }
+
+                // Parse user ID
+                if (!Guid.TryParse(userIdClaim.Value, out Guid userId))
+                {
+                    return BadRequest("Invalid user ID format.");
+                }
+
+                // Retrieve user entity by ID
+                using (var session = NHibernateHelper.OpenSession())
+                {
+                    var userEntity = session.Get<Models.UserEntity.AspNetUsers>(userIdClaim.Value);
+                    if (userEntity == null)
+                    {
+                        return NotFound("User not found.");
+                    }
+
+                    return Ok(userEntity);
+                }
+            }
+            else
+            {
+                // User is not authenticated
+                return Unauthorized();
+            }
+        }
+        
         [HttpGet]
         public ActionResult<IEnumerable<Models.UserEntity.AspNetUsers>> GetAll()
         {

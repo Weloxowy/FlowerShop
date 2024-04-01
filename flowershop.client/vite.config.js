@@ -47,18 +47,36 @@ export default defineConfig({
     server: {
         proxy: {
             '^/weatherforecast': {
-                target: 'https://localhost:7143/',
-                secure: true
+                target: 'https://localhost:7142/',
+                secure: false,
+                changeOrigin: true
             },
             '^/api/UserEntity':{
-                target: 'https://localhost:7143/',
-                secure: true
+                target: 'https://localhost:7142/',
+                secure: false,
+                changeOrigin: true
+            },
+            '^/login':{
+                target: 'https://localhost:7142/',
+                secure: false,
+                changeOrigin: true,
+                cookiePathRewrite: {
+                    "*": "/",
+                }
+            },
+            '/api/AspNetUsers/info':{
+                target: 'https://localhost:7142/',
+                changeOrigin: true,
+                secure: false
             }
+            
+            
         },
         port: 5173,
         https: {
             key: fs.readFileSync(keyFilePath),
             cert: fs.readFileSync(certFilePath),
-        }
+        },
+        
     }
 })
