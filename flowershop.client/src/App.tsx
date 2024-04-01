@@ -121,12 +121,17 @@ export default function App(props: PaperProps) {
 
         fetchData();
     }, []);
+    const headers = {'Content-Type':'application/json',
+        'Access-Control-Allow-Origin':'*',
+        'Access-Control-Allow-Methods':'POST,PATCH,OPTIONS,GET'}
     async function getCookies() {
         const response = await fetch("https://localhost:7142/api/AspNetUsers/info", {
             credentials: 'include',
-            method: 'GET',
             headers: {
-                "Content-Type": "application/json"
+                "Access-Control-Allow-Headers" : "Content-Type",
+                "Access-Control-Allow-Origin": "*",
+                'Content-Type': 'application/json',
+                "Access-Control-Allow-Methods": "OPTIONS,POST,GET,PATCH"
             },
            // mode: 'no-cors' - Przepusci zapytanie ale nie zwroci nic
         });

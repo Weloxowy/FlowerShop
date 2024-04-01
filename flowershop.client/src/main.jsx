@@ -9,6 +9,7 @@ import {
 import App from "./App.tsx";
 import Home from "./Home.tsx";
 import MainPage from "./MainPage.tsx";
+
 //basic routing
 ReactDOM.createRoot(document.getElementById('root')).render(
     <BrowserRouter>
