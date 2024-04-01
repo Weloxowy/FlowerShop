@@ -1,15 +1,62 @@
-import { Container, Text, Button, Group, MantineProvider } from '@mantine/core';
-import { GithubIcon } from '@mantinex/dev-icons';
+import { Container, Text, Button, Group, MantineProvider, Anchor, Checkbox, PasswordInput, Stack, TextInput } from '@mantine/core';
+import { GithubIcon } from '@mantinex/dev-icons'; // Assuming this import is correct
 import classes from "./pages/Home.module.css";
 import { HeaderMenu } from "./HeaderMenu";
-import {useEffect, useState} from "react";
-import {IconLogout} from "@tabler/icons-react";
+import React, { useEffect, useState } from "react";
+import { IconLogout } from "@tabler/icons-react";
+import { upperFirst, useToggle } from "@mantine/hooks"; // Adjusted import
+import { useForm } from "@mantine/form"; // Adjusted import
 
 export default function MainPage() {
     const handleGetStartedClick = () => {
-        window.location.href = "/pag";
+       // window.location.href = "/pag"; - 
     };
+    const [type, toggle] = useToggle(['login', 'register']);
+    const form = useForm({
+        initialValues: {
+            old_password: '',
+            name: '',
+            password: '',
+            terms: true,
+        },
 
+        validate: {
+            password: (val) => (val.length <= 4 ? 'Password should include at least 4 characters' : null),
+        },
+    });
+    const [email, setEmail] = useState('');
+    async function handleChangePassword()
+    {
+        const url = "https://localhost:7142/manage/info";
+        const data = {
+            newEmail: email,
+            newPassword: form.values.password,
+            oldPassword: form.values.old_password,
+        }
+        try {
+            const response = await fetch(url, {
+                credentials: 'include',
+                method: 'POST',
+                headers: {
+                    'Content-Type':
+                        'application/json',
+                },
+                body: JSON.stringify(data),
+            });
+            if (!response.ok) {
+                const errorMessage = await response.text();
+                throw new Error(`HTTP error! Status: ${response.status}, Message: ${errorMessage}`);
+            }
+            else {
+                console.log("Haslo zmienione");
+                await logout();
+                window.location.href = "/pag";
+            }
+        }catch (error) {
+            console.error('Error changing password', error);
+        }
+        
+    }
     async function getCookies() {
         const response = await fetch("https://localhost:7142/api/AspNetUsers/info", {
             credentials: 'include',
@@ -18,7 +65,7 @@ export default function MainPage() {
                 'Access-Control-Allow-Origin': '*',
                 'Access-Control-Allow-Credentials':'true'
             }
-            // mode: 'no-cors' - Przepusci zapytanie ale nie zwroci nic
+            
         });
         const data = await response.json();
         return data.email;
@@ -32,11 +79,8 @@ export default function MainPage() {
                 'Access-Control-Allow-Credentials': 'true'
             }
         });
-
+        window.location.href = "/pag";
     }
-
-    const [email, setEmail] = useState('');
-
     useEffect(() => {
         getCookies().then(email => setEmail(email));
     }, []);
@@ -53,7 +97,7 @@ export default function MainPage() {
                                 {email}
                             </Text>{' '}
                         </h1>
-
+                        
                         <Group className={classes.controls}>
                             <Button
                                 size="xl"
@@ -78,6 +122,32 @@ export default function MainPage() {
                     </Container>
                 </div>
             </div>
+            <form onSubmit={form.onSubmit(() => { })}>
+                <Stack>
+                    <PasswordInput
+                        required
+                        label="Old Password"
+                        placeholder="Old Password"
+                        value={form.values.old_password}
+                        onChange={(event) => form.setFieldValue('old_password', event.currentTarget.value)}
+                        radius="md"
+                    />
+
+                    <PasswordInput
+                        required
+                        label="Password"
+                        placeholder="New Password"
+                        value={form.values.password}
+                        onChange={(event) => form.setFieldValue('password', event.currentTarget.value)}
+                        radius="md"
+                    />
+                </Stack>
+                <Group justify="space-between" mt="xl">
+                    <Button type="submit" radius="xl" onClick={handleChangePassword}>
+                        Zmien haslo
+                    </Button>
+                </Group>
+            </form>
         </MantineProvider>
     );
 }
