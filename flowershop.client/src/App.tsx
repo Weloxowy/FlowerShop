@@ -78,15 +78,18 @@ export default function App(props: PaperProps) {
 
         try {
             const response = await fetch(url, {
+                credentials: 'include',
                 method: 'POST',
                 headers: {
                     'Content-Type':
                         'application/json',
+                        'Cookie': 'cookieName=cookieValue'
                 },
                 body: JSON.stringify(data),
             });
-            console.log("Elo");
-            await getCookies();
+            console.log(response.headers);
+            console.log(response);
+           // await getCookies();
             if (!response.ok) {
 
                 const errorMessage = await response.text();
@@ -103,24 +106,7 @@ export default function App(props: PaperProps) {
     }
 
     const [users, setUsers] = useState([]);
-
-    useEffect(() => {
-        async function fetchData() {
-            try {
-                const response = await fetch("https://localhost:7142/api/UserEntity");
-                //https://localhost:7142/api/UserEntity/users/login/[login]?password=[password]
-                if (!response.ok) {
-                    throw new Error("Failed to fetch data");
-                }
-                const data = await response.json();
-                setUsers(data);
-            } catch (error) {
-                console.error("Error fetching data:", error);
-            }
-        }
-
-        fetchData();
-    }, []);
+    
     const headers = {'Content-Type':'application/json',
         'Access-Control-Allow-Origin':'*',
         'Access-Control-Allow-Methods':'POST,PATCH,OPTIONS,GET'}
@@ -192,7 +178,7 @@ export default function App(props: PaperProps) {
                                 ? 'Already have an account? Login'
                                 : "Don't have an account? Register"}
                         </Anchor>
-                        <Button type="submit" radius="xl" onClick={type === 'register' ? handleRegister : getCookies}>
+                        <Button type="submit" radius="xl" onClick={type === 'register' ? handleRegister : handleLogin}>
                             {upperFirst(type)}
                         </Button>
                     </Group>
