@@ -3,6 +3,7 @@ import { GithubIcon } from '@mantinex/dev-icons';
 import classes from "./pages/Home.module.css";
 import { HeaderMenu } from "./HeaderMenu";
 import {useEffect, useState} from "react";
+import {IconLogout} from "@tabler/icons-react";
 
 export default function MainPage() {
     const handleGetStartedClick = () => {
@@ -20,8 +21,18 @@ export default function MainPage() {
             // mode: 'no-cors' - Przepusci zapytanie ale nie zwroci nic
         });
         const data = await response.json();
-        console.log(data);
         return data.email;
+    }
+    async function logout() {
+        const response = await fetch("https://localhost:7142/api/AspNetUsers/logout", {
+            credentials: 'include',
+            headers: {
+                'Content-Type': 'application/json',
+                'Access-Control-Allow-Origin': '*',
+                'Access-Control-Allow-Credentials': 'true'
+            }
+        });
+
     }
 
     const [email, setEmail] = useState('');
@@ -29,7 +40,7 @@ export default function MainPage() {
     useEffect(() => {
         getCookies().then(email => setEmail(email));
     }, []);
-
+    
     return (
         <MantineProvider>
             <div>
@@ -55,13 +66,13 @@ export default function MainPage() {
                             </Button>
                             <Button
                                 component="a"
-                                href="https://github.com/mantinedev/mantine"
                                 size="xl"
                                 variant="default"
                                 className={classes.control}
-                                leftSection={<GithubIcon size={20} />}
+                                leftSection={<IconLogout size={20} />}
+                                onClick = {logout}
                             >
-                                GitHub
+                                Wyloguj
                             </Button>
                         </Group>
                     </Container>

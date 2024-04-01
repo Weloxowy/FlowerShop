@@ -62,8 +62,6 @@ export default function App(props: PaperProps) {
                 window.location.href = "/main";
             }
 
-            // Entity created successfully
-            console.log('Entity created successfully');
         } catch (error) {
             console.error('Error creating entity:', error);
         }
@@ -96,8 +94,6 @@ export default function App(props: PaperProps) {
                 window.location.href = "/main";
             }
 
-            // Entity created successfully
-            console.log('Entity created successfully1');
         } catch (error) {
             console.error('Error creating entity:', error);
         }
@@ -116,11 +112,30 @@ export default function App(props: PaperProps) {
                 'Access-Control-Allow-Origin': '*',
                 'Access-Control-Allow-Credentials':'true'
             }
-           // mode: 'no-cors' - Przepusci zapytanie ale nie zwroci nic
+           
         });
-        const data = await response.json;
-        console.log(data);
+        
+        if (response.ok) {
+            
+            return true;
+        } else {
+            
+            return false;
+        }
+        
+        
     }
+    useEffect(() => {
+        const checkCookies = async () => {
+            const isLoggedIn = await getCookies();
+            if (isLoggedIn) {
+                window.location.href = "/main";
+            } else {
+                
+            }
+        };
+        checkCookies();
+    }, []);
     return (
         <MantineProvider>
             <Paper radius="md" p="xl" withBorder {...props}>

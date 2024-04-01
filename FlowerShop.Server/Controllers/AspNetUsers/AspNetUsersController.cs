@@ -7,6 +7,7 @@ using Microsoft.AspNetCore.Cors;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Authentication;
+using Microsoft.AspNetCore.Authentication.Cookies;
 using Microsoft.AspNetCore.Http;
 namespace FlowerShop.Server.Controllers.CategoryEntity
 {
@@ -18,6 +19,20 @@ namespace FlowerShop.Server.Controllers.CategoryEntity
     {
         
         private readonly UserEntityService _userEntityService = new UserEntityService();
+        
+        [HttpGet("logout")]
+        public async Task<IActionResult> Logout()
+        {
+            foreach (var cookie in Request.Cookies.Keys)
+            {
+                if (cookie.StartsWith(".AspNetCore.Identity.Application"))
+                {
+                    Response.Cookies.Delete(cookie);
+                }
+            }
+            
+            return Ok("Identity cookies deleted successfully.");
+        }
         
         [HttpGet("info")]
         public async Task<IActionResult> GetUserInfo()

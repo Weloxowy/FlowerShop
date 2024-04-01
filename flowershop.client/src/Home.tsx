@@ -2,8 +2,41 @@ import { Container, Text, Button, Group, MantineProvider } from '@mantine/core';
 import { GithubIcon } from '@mantinex/dev-icons';
 import classes from "./pages/Home.module.css";
 import { HeaderMenu } from "./HeaderMenu";
+import {useEffect} from "react";
 
 export default function Home() {
+    async function getCookies() {
+        const response = await fetch("https://localhost:7142/api/AspNetUsers/info", {
+            credentials: 'include',
+            headers: {
+                'Content-Type': 'application/json',
+                'Access-Control-Allow-Origin': '*',
+                'Access-Control-Allow-Credentials':'true'
+            }
+
+        });
+
+        if (response.ok) {
+
+            return true;
+        } else {
+
+            return false;
+        }
+
+
+    }
+    useEffect(() => {
+        const checkCookies = async () => {
+            const isLoggedIn = await getCookies();
+            if (isLoggedIn) {
+                window.location.href = "/main";
+            } else {
+
+            }
+        };
+        checkCookies();
+    }, []);
     const handleGetStartedClick = () => {
         window.location.href = "/pag";
     };
