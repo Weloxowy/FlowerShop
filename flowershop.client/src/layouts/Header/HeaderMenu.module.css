@@ -1,14 +1,12 @@
-/* HeaderMenu.module.css */
 .header {
-    height: rem(56px);
-    margin-bottom: rem(120px);
+    height: auto;
+    margin-bottom: 2rem;
     background-color: var(--mantine-color-body);
-    border-bottom: rem(1px) solid light-dark(var(--mantine-color-gray-3), var(--mantine-color-dark-4));
-    width: max-content;
+    border-bottom: .05rem solid light-dark(var(--mantine-color-gray-3), var(--mantine-color-dark-4));
 }
 
 .inner {
-    height: rem(56px);
+    height: 2rem;
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -17,7 +15,7 @@
 .link {
     display: block;
     line-height: 1;
-    padding: rem(8px) rem(12px);
+    padding: 0rem 1.25rem;
     border-radius: var(--mantine-radius-sm);
     text-decoration: none;
     color: light-dark(var(--mantine-color-gray-7), var(--mantine-color-dark-0));
@@ -30,5 +28,5 @@
 }
 
 .linkLabel {
-    margin-right: rem(5px);
+    margin-right: 0rem;
 }

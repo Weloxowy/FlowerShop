@@ -1,26 +1,33 @@
-import React from 'react'
-import ReactDOM from 'react-dom/client'
-import './index.css'
+import React from 'react';
+import ReactDOM from 'react-dom/client';
+import './index.css';
 import {
     BrowserRouter,
-    Routes, // instead of "Switch"
+    Routes,
     Route,
-} from "react-router-dom";
-import App from "./App.tsx";
-import Home from "./Home.tsx";
-import MainPage from "./MainPage.tsx";
+} from 'react-router-dom';
+import { MantineProvider, createTheme } from '@mantine/core';
+import Auth from './pages/Auth/Auth.tsx';
+import Home from './pages/Index/Home.tsx';
+import MainPage from './pages/Temp/MainPage.tsx';
 
-//basic routing
+// Tworzenie motywu Mantine
+const theme = createTheme({
+    fontFamily: 'Open Sans, sans-serif',
+    primaryColor: 'green',
+    focusRing: 'always',
+    defaultRadius: 'md',
+    defaultGradient: {from: 'green', to: 'lime', deg: 45}
+});
+// Routing
 ReactDOM.createRoot(document.getElementById('root')).render(
-    <BrowserRouter>
-        <Routes>
-            <Route path="/" element={<Home />} />
-        </Routes>
-        <Routes>
-            <Route path="/pag" element={<App />} />
-        </Routes>
-        <Routes>
-            <Route path="/main" element={<MainPage />} />
-        </Routes>
-    </BrowserRouter>
-)
+    <MantineProvider theme={theme} defaultColorScheme="auto">
+        <BrowserRouter>
+            <Routes>
+                <Route path="/" element={<Home />} />
+                <Route path="/pag" element={<Auth />} />
+                <Route path="/main" element={<MainPage />} />
+            </Routes>
+        </BrowserRouter>
+    </MantineProvider>
+);

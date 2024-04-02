@@ -1,7 +1,7 @@
 import { Container, Text, Button, Group, MantineProvider, Anchor, Checkbox, PasswordInput, Stack, TextInput } from '@mantine/core';
-import { GithubIcon } from '@mantinex/dev-icons'; // Assuming this import is correct
-import classes from "./pages/Home.module.css";
-import { HeaderMenu } from "./HeaderMenu";
+
+import classes from "../Index/Home.module.css";
+import { HeaderMenu } from "../../layouts/Header/HeaderMenu";
 import React, { useEffect, useState } from "react";
 import { IconLogout } from "@tabler/icons-react";
 import { upperFirst, useToggle } from "@mantine/hooks"; // Adjusted import
@@ -86,7 +86,7 @@ export default function MainPage() {
     }, []);
     
     return (
-        <MantineProvider>
+        <div>
             <div>
                 <HeaderMenu />
                 <div className={classes.wrapper}>
@@ -103,7 +103,6 @@ export default function MainPage() {
                                 size="xl"
                                 className={classes.control}
                                 variant="gradient"
-                                gradient={{ from: 'blue', to: 'cyan' }}
                                 onClick={handleGetStartedClick} // Add onClick event handler
                             >
                                 Get started
@@ -148,6 +147,6 @@ export default function MainPage() {
                     </Button>
                 </Group>
             </form>
-        </MantineProvider>
+        </div>
     );
 }

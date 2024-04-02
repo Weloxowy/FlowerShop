@@ -5,25 +5,26 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="2cdc394c-ef38-46b7-9635-74450f59010d" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/.idea/inspectionProfiles/Project_Default.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/flowershop.client/src/HeaderMenu.module.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/flowershop.client/src/HeaderMenu.tsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/flowershop.client/src/Home.tsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/flowershop.client/src/pages/Home.module.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ConsoleApplication1/ConsoleApplication1.csproj" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/ConsoleApplication1/Program.cs" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/ConsoleApplication1/Properties/AssemblyInfo.cs" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/FlowerShop.Server/Models/CategoryEntity/CategoryEntity.cs" beforeDir="false" afterPath="$PROJECT_DIR$/FlowerShop.Server/Models/CategoryEntity/CategoryEntity.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/FlowerShop.Server/Models/CategoryEntity/CategoryEntityMapping.cs" beforeDir="false" afterPath="$PROJECT_DIR$/FlowerShop.Server/Models/CategoryEntity/CategoryEntityMapping.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/FlowerShop.Server/Models/CompanyEntity/CompanyEntity.cs" beforeDir="false" afterPath="$PROJECT_DIR$/FlowerShop.Server/Models/CompanyEntity/CompanyEntity.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/FlowerShop.Server/Models/CompanyEntity/CompanyEntityMapping.cs" beforeDir="false" afterPath="$PROJECT_DIR$/FlowerShop.Server/Models/CompanyEntity/CompanyEntityMapping.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/FlowerShop.Server/Persistence/CategoryEntity/Database/_202422030001_CreateTable.cs" beforeDir="false" afterPath="$PROJECT_DIR$/FlowerShop.Server/Persistence/CategoryEntity/Database/_202422030001_CreateTable.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/FlowerShop.Server/Persistence/CompanyEntity/Database/_202423030002_CreateTable.cs" beforeDir="false" afterPath="$PROJECT_DIR$/FlowerShop.Server/Persistence/CompanyEntity/Database/_202423030002_CreateTable.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/flowershop.client/package-lock.json" beforeDir="false" />
+      <change afterPath="$PROJECT_DIR$/flowershop.client/src/assets/Theme.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/flowershop.client/src/components/CarouselHome/CarouselHome.module.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/flowershop.client/src/components/CarouselHome/CarouselHome.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/flowershop.client/src/features/getCookies/getCookies.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/flowershop.client/src/layouts/Header/HeaderMenu.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/flowershop.client/src/pages/Index/Home.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/FlowerShop.Server/FlowerShop.Server.csproj" beforeDir="false" afterPath="$PROJECT_DIR$/FlowerShop.Server/FlowerShop.Server.csproj" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/flowershop.client/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/flowershop.client/package-lock.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/flowershop.client/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/flowershop.client/package.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/flowershop.client/src/App.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/flowershop.client/src/App.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/flowershop.client/src/App.css" beforeDir="false" afterPath="$PROJECT_DIR$/flowershop.client/src/pages/Auth/Auth.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/flowershop.client/src/App.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/flowershop.client/src/pages/Auth/Auth.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/flowershop.client/src/HeaderMenu.module.css" beforeDir="false" afterPath="$PROJECT_DIR$/flowershop.client/src/layouts/Header/HeaderMenu.module.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/flowershop.client/src/HeaderMenu.tsx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/flowershop.client/src/Home.tsx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/flowershop.client/src/MainPage.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/flowershop.client/src/pages/Temp/MainPage.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/flowershop.client/src/assets/react.svg" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/flowershop.client/src/main.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/flowershop.client/src/main.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/flowershop.client/src/pages/Home.module.css" beforeDir="false" afterPath="$PROJECT_DIR$/flowershop.client/src/pages/Index/Home.module.css" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -66,6 +67,7 @@
   <component name="PropertiesComponent">{
   &quot;keyToString&quot;: {
     &quot;ASKED_SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
+    &quot;HTTP Request.FlowerShop.Server | #1.executor&quot;: &quot;Run&quot;,
     &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
     &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
     &quot;git-widget-placeholder&quot;: &quot;master&quot;,
@@ -86,6 +88,10 @@
 }</component>
   <component name="RecentsManager">
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Users\Pawel\source\repos\FlowerShop\flowershop.client\src\pages\Temp" />
+      <recent name="C:\Users\Pawel\source\repos\FlowerShop\flowershop.client\src\pages\Index" />
+      <recent name="C:\Users\Pawel\source\repos\FlowerShop\flowershop.client\src\layouts\Header" />
+      <recent name="C:\Users\Pawel\source\repos\FlowerShop\flowershop.client\src\pages\Auth" />
       <recent name="C:\Users\Pawel\source\repos\FlowerShop\flowershop.client\src\pages" />
     </key>
   </component>
@@ -107,6 +113,9 @@
       <workItem from="1711750955440" duration="4696000" />
       <workItem from="1711802649577" duration="6877000" />
       <workItem from="1711821551316" duration="591000" />
+      <workItem from="1712010289262" duration="6926000" />
+      <workItem from="1712047030838" duration="2296000" />
+      <workItem from="1712058678986" duration="6284000" />
     </task>
     <servers />
   </component>

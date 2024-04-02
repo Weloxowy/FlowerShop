@@ -13,12 +13,12 @@ import {
     Anchor,
     Stack,
 } from '@mantine/core';
-import './App.css';
+import './Auth.css';
 import '@mantine/core/styles.css';
 import { MantineProvider } from '@mantine/core';
 import React, { useState, useEffect } from "react";
 
-export default function App(props: PaperProps) {
+export default function Auth(props: PaperProps) {
     const [type, toggle] = useToggle(['login', 'register']);
     const form = useForm({
         initialValues: {
@@ -137,7 +137,6 @@ export default function App(props: PaperProps) {
         checkCookies();
     }, []);
     return (
-        <MantineProvider>
             <Paper radius="md" p="xl" withBorder {...props}>
                 <Text size="lg" fw={500}>
                     Welcome to Mantine, {type} with
@@ -205,6 +204,5 @@ export default function App(props: PaperProps) {
                     ))}
                 </Stack>
             </Paper>
-        </MantineProvider>
     );
 }
