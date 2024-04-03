@@ -4,8 +4,6 @@ import plugin from '@vitejs/plugin-react';
 import fs from 'fs';
 import path from 'path';
 import child_process from 'child_process';
-import express from 'express';
-import cors from 'cors';
 
 // Determine certificate paths
 const baseFolder =

@@ -10,6 +10,7 @@ import { MantineProvider, createTheme } from '@mantine/core';
 import Auth from './pages/Auth/Auth.tsx';
 import Home from './pages/Index/Home.tsx';
 import MainPage from './pages/Temp/MainPage.tsx';
+import BuyFlower from './pages/BuyFlower/BuyFlower.tsx';
 
 // Tworzenie motywu Mantine
 const theme = createTheme({
@@ -27,6 +28,7 @@ ReactDOM.createRoot(document.getElementById('root')).render(
                 <Route path="/" element={<Home />} />
                 <Route path="/pag" element={<Auth />} />
                 <Route path="/main" element={<MainPage />} />
+                <Route path="/buyflower" element={<BuyFlower />} />
             </Routes>
         </BrowserRouter>
     </MantineProvider>

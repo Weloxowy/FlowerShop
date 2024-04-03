@@ -13,7 +13,7 @@ const links = [
         link: '#1',
         label: 'Kwiaty',
         links: [
-            { link: '/pag', label: 'Cięte' },
+            { link: '/buyflower', label: 'Cięte' },
             { link: '/resources', label: 'Doniczkowe' },
             { link: '/community', label: 'Balkonowe' },
             { link: '/blog', label: 'Sukulenty' },
