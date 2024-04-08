@@ -5,26 +5,9 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="2cdc394c-ef38-46b7-9635-74450f59010d" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/flowershop.client/src/assets/Theme.tsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/flowershop.client/src/components/CarouselHome/CarouselHome.module.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/flowershop.client/src/components/CarouselHome/CarouselHome.tsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/flowershop.client/src/features/getCookies/getCookies.tsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/flowershop.client/src/layouts/Header/HeaderMenu.tsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/flowershop.client/src/pages/Index/Home.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/FlowerShop.Server/FlowerShop.Server.csproj" beforeDir="false" afterPath="$PROJECT_DIR$/FlowerShop.Server/FlowerShop.Server.csproj" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/flowershop.client/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/flowershop.client/package-lock.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/flowershop.client/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/flowershop.client/package.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/flowershop.client/src/App.css" beforeDir="false" afterPath="$PROJECT_DIR$/flowershop.client/src/pages/Auth/Auth.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/flowershop.client/src/App.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/flowershop.client/src/pages/Auth/Auth.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/flowershop.client/src/HeaderMenu.module.css" beforeDir="false" afterPath="$PROJECT_DIR$/flowershop.client/src/layouts/Header/HeaderMenu.module.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/flowershop.client/src/HeaderMenu.tsx" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/flowershop.client/src/Home.tsx" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/flowershop.client/src/MainPage.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/flowershop.client/src/pages/Temp/MainPage.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/flowershop.client/src/assets/react.svg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/flowershop.client/src/main.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/flowershop.client/src/main.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/flowershop.client/src/pages/Home.module.css" beforeDir="false" afterPath="$PROJECT_DIR$/flowershop.client/src/pages/Index/Home.module.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/flowershop.client/packages.config" beforeDir="false" afterPath="$PROJECT_DIR$/flowershop.client/packages.config" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/flowershop.client/src/components/CarouselHome/CarouselHome.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/flowershop.client/src/components/CarouselHome/CarouselHome.tsx" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -116,6 +99,8 @@
       <workItem from="1712010289262" duration="6926000" />
       <workItem from="1712047030838" duration="2296000" />
       <workItem from="1712058678986" duration="6284000" />
+      <workItem from="1712596398610" duration="1071000" />
+      <workItem from="1712597890192" duration="1157000" />
     </task>
     <servers />
   </component>
