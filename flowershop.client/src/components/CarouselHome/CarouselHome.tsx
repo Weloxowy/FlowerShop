@@ -53,7 +53,7 @@ function Card({ image, title, category }: CardProps) {
         <Paper
             shadow="md"
             p="xl"
-            radius="md"
+            radius="xl"
             style={{ backgroundImage: `url(${image})` }}
             className={classes.card}
         >

@@ -5,9 +5,15 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="2cdc394c-ef38-46b7-9635-74450f59010d" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/flowershop.client/src/layouts/Footer/Footer.module.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/flowershop.client/src/layouts/Footer/Footer.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/flowershop.client/packages.config" beforeDir="false" afterPath="$PROJECT_DIR$/flowershop.client/packages.config" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/flowershop.client/src/components/CarouselHome/CarouselHome.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/flowershop.client/src/components/CarouselHome/CarouselHome.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/flowershop.client/src/index.css" beforeDir="false" afterPath="$PROJECT_DIR$/flowershop.client/src/index.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/flowershop.client/src/layouts/Header/HeaderMenu.module.css" beforeDir="false" afterPath="$PROJECT_DIR$/flowershop.client/src/layouts/Header/HeaderMenu.module.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/flowershop.client/src/layouts/Header/HeaderMenu.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/flowershop.client/src/layouts/Header/HeaderMenu.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/flowershop.client/src/pages/Index/Home.module.css" beforeDir="false" afterPath="$PROJECT_DIR$/flowershop.client/src/pages/Index/Home.module.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/flowershop.client/src/pages/Index/Home.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/flowershop.client/src/pages/Index/Home.tsx" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -100,11 +106,23 @@
       <workItem from="1712047030838" duration="2296000" />
       <workItem from="1712058678986" duration="6284000" />
       <workItem from="1712596398610" duration="1071000" />
-      <workItem from="1712597890192" duration="1157000" />
+      <workItem from="1712597890192" duration="11985000" />
     </task>
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="3" />
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint enabled="true" type="javascript">
+          <url>file://$PROJECT_DIR$/flowershop.client/src/layouts/Header/HeaderMenu.tsx</url>
+          <line>129</line>
+          <properties lambdaOrdinal="-1" />
+          <option name="timeStamp" value="1" />
+        </line-breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
   </component>
 </project>
