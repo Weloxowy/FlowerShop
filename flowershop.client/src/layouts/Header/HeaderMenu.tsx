@@ -1,5 +1,5 @@
 import React, {useContext, useEffect, useState} from "react";
-import { Menu, Group, Center, Burger, Container, Button, Avatar } from '@mantine/core';
+import {Menu, Group, Center, Burger, Container, Button, Avatar, Text} from '@mantine/core';
 import { useDisclosure } from '@mantine/hooks';
 import { IconChevronDown } from '@tabler/icons-react';
 import { MantineLogo } from '@mantinex/mantine-logo';
@@ -10,7 +10,7 @@ import { checkUserLoggedIn } from "../../features/getCookies/getCookies";
 const links = [
     { link: '/pag', label: 'Nowości' },
     {
-        link: '#1',
+        link: '/kwiaty',
         label: 'Kwiaty',
         links: [
             { link: '/buyflower', label: 'Cięte' },
@@ -117,14 +117,18 @@ export function HeaderMenu() {
         }
 
         return (
-            <Link
-                key={link.label}
-                to={link.link}
-                className={classes2.link}
-                onClick={(event) => event.preventDefault()}
-            >
-                {link.label}
-            </Link>
+        <Text
+            key={link.label}
+            className={classes2.link}
+            component="a"
+            href={link.link}
+            onClick={(event) => {
+                event.preventDefault(); // Zapobieganie domyślnej akcji przekierowania
+                window.location.href = link.link; // Ręczne przekierowanie po kliknięciu
+            }}
+        >
+            {link.label}
+        </Text>
         );
     });
 
@@ -132,7 +136,7 @@ export function HeaderMenu() {
         <header className={classes2.header}>
             <Container size="md">
                 <div className={classes2.inner}>
-                    <MantineLogo size={28} />
+                    <MantineLogo size={28}/>
                     <Group gap={5} visibleFrom="sm">
                         {items}
                     </Group>
