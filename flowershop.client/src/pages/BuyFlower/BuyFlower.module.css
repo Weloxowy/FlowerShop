@@ -28,9 +28,25 @@
 
 .right {
     padding: 100px;
-    background-color: #131bf2;
+    background-color: darkorange;
     width: 50%;
 }
+
+.counter {
+    display: flex;
+    align-items: center;
+    justify-content: center; /* Dodane, aby wyśrodkować elementy w poziomie */
+}
+
+.button {
+    padding: 10px;
+    font-size: 20px;
+
+    border: 1px solid #000;
+    cursor: pointer;
+    margin: 0 10px;
+}
+
 
 .recommend {
     padding: 1%;
@@ -44,4 +60,7 @@
     width: 100%;
     background-color: aqua;
     clear: both;
+}
+.interval{
+    margin: 30px;
 }

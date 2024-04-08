@@ -22,6 +22,15 @@ namespace FlowerShop.Server.Controllers.ProductEntity
             }
         }
 
+       [HttpGet("Category/{name}")]
+        public ActionResult<IEnumerable<Models.ProductEntity.ProductEntity>> GetByCategoryId(string name)
+        {
+         /*   List<Models.ProductEntity.ProductEntity> siema = new List<Models.ProductEntity.ProductEntity>();
+            Models.ProductEntity.ProductEntity test = new Models.ProductEntity.ProductEntity();
+            siema.Add(test); */
+            return _productEntityService.returnByCategoryId(name);
+        }
+
         [HttpGet("{id}")]
         public ActionResult<Models.ProductEntity.ProductEntity> GetById(Guid id)
         {
